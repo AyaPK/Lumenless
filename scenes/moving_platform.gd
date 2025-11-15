@@ -25,7 +25,6 @@ func _get_configuration_warnings() -> PackedStringArray:
 
 func check_for_path_2d() -> bool:
 	var _count: int = 0
-	print(get_children())
 	for _c in get_children():
 		if _c is Path2D:
 			_count += 1

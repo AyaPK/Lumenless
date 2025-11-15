@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 LightManager="*res://00_globals/light_manager.gd"
 
+[global_group]
+
+lights=""
+
 [input]
 
 ui_left={

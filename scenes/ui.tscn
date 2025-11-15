@@ -1,9 +1,51 @@
-[gd_scene load_steps=5 format=3 uid="uid://cwoo3dnk3u7hw"]
+[gd_scene load_steps=9 format=3 uid="uid://cwoo3dnk3u7hw"]
 
 [ext_resource type="Script" uid="uid://cdf7dmsy51us0" path="res://scripts/ui.gd" id="1_nt7q6"]
 [ext_resource type="Texture2D" uid="uid://bpjf0co4iue27" path="res://assets/progress_bar_base_under.png" id="2_gdt2y"]
 [ext_resource type="Texture2D" uid="uid://c7mi5fhdt6ptt" path="res://assets/progress_bar_base_over.png" id="2_yev5y"]
 [ext_resource type="Texture2D" uid="uid://ckj82u7mbrfr8" path="res://assets/progress_bar_base.png" id="3_gdt2y"]
+
+[sub_resource type="Animation" id="Animation_gdt2y"]
+resource_name = "still"
+
+[sub_resource type="Animation" id="Animation_wm3ai"]
+resource_name = "shake"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LightMeter:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(268, 604), Vector2(269, 605), Vector2(267, 603), Vector2(269, 605), Vector2(267, 605), Vector2(267, 603), Vector2(267.048, 604)]
+}
+
+[sub_resource type="Animation" id="Animation_8dubc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LightMeter:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(268, 606)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wm3ai"]
+_data = {
+&"RESET": SubResource("Animation_8dubc"),
+&"shake": SubResource("Animation_wm3ai"),
+&"still": SubResource("Animation_gdt2y")
+}
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_nt7q6")
@@ -25,3 +67,8 @@ offset_top = -10.0
 offset_right = 1173.0
 offset_bottom = 666.0
 color = Color(0, 0, 0, 0)
+
+[node name="HpAnim" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_wm3ai")
+}

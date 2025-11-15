@@ -87,10 +87,7 @@ func _get_directional_light() -> DirectionalLight2D:
 	return null
 
 func _get_point_lights() -> Array:
-	var root := get_tree().current_scene
-	if root == null:
-		return []
-	return root.find_children("", "PointLight2D", true, false)
+	return get_tree().get_nodes_in_group("lights")
 
 func _check_directional_light(light: DirectionalLight2D) -> bool:
 	var dir := Vector2.DOWN.rotated(light.global_rotation)
@@ -113,7 +110,6 @@ func _check_point_light(light: Node) -> bool:
 		return false
 	var lp: Vector2 = plight.global_position
 	var effective_radius: float = _compute_point_light_radius(plight)
-	print(effective_radius)
 	if global_position.distance_to(lp) > effective_radius:
 		return false
 	var space := get_world_2d().direct_space_state

@@ -2,6 +2,7 @@ class_name Ui extends CanvasLayer
 
 @onready var light_meter: TextureProgressBar = $LightMeter
 @onready var color_rect: ColorRect = $ColorRect
+@onready var hp_anim: AnimationPlayer = $HpAnim
 
 func _ready() -> void:
 	LightManager.ui = self
