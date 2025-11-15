@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://dedxc2xy38rlo"]
+
+[ext_resource type="Script" uid="uid://dr20sw64bvmks" path="res://scenes/moving_platform.gd" id="1_ms375"]
+[ext_resource type="Texture2D" uid="uid://rgse4ed56ync" path="res://assets/door.png" id="2_1tdcd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1tdcd"]
+size = Vector2(500, 120.000015)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1tdcd"]
+polygon = PackedVector2Array(-229.99997, -59.999992, -229.99997, 59.999992, 269.99997, 59.999992, 269.99997, -59.999992, -229.99997, -59.999992)
+
+[node name="MovingPlatform" type="Node2D"]
+scale = Vector2(0.1, 0.1)
+script = ExtResource("1_ms375")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+
+[node name="StaticBody2D" type="CharacterBody2D" parent="PathFollow2D"]
+position = Vector2(-20, 0)
+collision_layer = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="PathFollow2D/StaticBody2D"]
+position = Vector2(19.999998, 0)
+rotation = 1.5707964
+scale = Vector2(7.999998, 7.999998)
+texture = ExtResource("2_1tdcd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/StaticBody2D"]
+position = Vector2(20, -4.5474735e-13)
+scale = Vector2(0.9999997, 0.9999997)
+shape = SubResource("RectangleShape2D_1tdcd")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="PathFollow2D/StaticBody2D"]
+occluder = SubResource("OccluderPolygon2D_1tdcd")
