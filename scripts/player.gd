@@ -17,6 +17,7 @@ var accepting_input: bool = false
 
 func _ready() -> void:
 	LightManager.player = self
+	LevelManager.reset_level.connect(die)
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -136,3 +137,8 @@ func _point_light_contains(plight: PointLight2D, world_point: Vector2) -> bool:
 	var nx: float = p_local.x / w2
 	var ny: float = p_local.y / h2
 	return (nx * nx + ny * ny) <= 1.0
+
+func die() -> void:
+	var start_position = get_parent().player_spawn.global_position
+	self.global_position = start_position
+	

@@ -5,6 +5,8 @@ var current_level: int = 0
 @warning_ignore("unused_signal")
 signal player_entering
 
+signal reset_level
+
 func change_level() -> void:
 	LightManager.player.accepting_input = false
 	Ui.fade_out()

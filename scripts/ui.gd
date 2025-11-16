@@ -21,11 +21,15 @@ func _ready() -> void:
 	fade_in()
 	await fade_in_complete
 	LightManager.player.accepting_input = true
+	LevelManager.reset_level.connect(reset_light)
+
 
 func _process(_delta: float) -> void:
 	node_end.global_position = Vector2(light_meter.global_position.x+(light_meter.value*1.28), light_meter.global_position.y)
 	node_end_2.global_position = Vector2(light_meter.global_position.x+(light_meter.value*1.28), light_meter.global_position.y+10)
 	node_end_3.global_position = Vector2(light_meter.global_position.x+(light_meter.value*1.28), light_meter.global_position.y+20)
+	if light_meter.value == 0:
+		LevelManager.reset_level.emit()
 	pass
 
 func _physics_process(_delta: float) -> void:
@@ -63,3 +67,6 @@ func fade_in() -> void:
 			fading = false
 			break
 		await get_tree().process_frame
+
+func reset_light() -> void:
+	light_meter.value = light_meter.max_value

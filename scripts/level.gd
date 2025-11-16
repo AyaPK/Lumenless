@@ -2,7 +2,6 @@ class_name Level extends Node2D
 
 const PLAYER = preload("uid://gcebunfbf7wo")
 @onready var player_spawn: Marker2D = $PlayerSpawn
-
 @export var level_number: int
 
 func _ready() -> void:

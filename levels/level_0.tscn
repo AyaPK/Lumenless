@@ -1,16 +1,16 @@
 [gd_scene load_steps=12 format=4 uid="uid://jq37tdmbp8lk"]
 
-[ext_resource type="Script" uid="uid://duxm7abqqccp2" path="res://scripts/level.gd" id="1_iqu7t"]
-[ext_resource type="PackedScene" uid="uid://cagrdx3bs1rwr" path="res://scenes/directional_light.tscn" id="2_s6v32"]
-[ext_resource type="Texture2D" uid="uid://dqwpjooi41m8c" path="res://assets/tileset.png" id="3_q5upp"]
-[ext_resource type="TileSet" uid="uid://bk1yjrg2qcblf" path="res://tilesets/main.tres" id="4_hk1ki"]
-[ext_resource type="PackedScene" uid="uid://ct1jiahn013vu" path="res://scenes/torch.tscn" id="5_u4dht"]
-[ext_resource type="PackedScene" uid="uid://dedxc2xy38rlo" path="res://scenes/moving_platform.tscn" id="6_7un5e"]
-[ext_resource type="PackedScene" uid="uid://d3irtnld15lre" path="res://scenes/doorway.tscn" id="7_1sl2t"]
-[ext_resource type="PackedScene" uid="uid://bg7le8i24eeqa" path="res://scenes/player_spawn.tscn" id="7_q5upp"]
+[ext_resource type="Script" uid="uid://duxm7abqqccp2" path="res://scripts/level.gd" id="1_c4pne"]
+[ext_resource type="PackedScene" uid="uid://cagrdx3bs1rwr" path="res://scenes/directional_light.tscn" id="2_tfamw"]
+[ext_resource type="Texture2D" uid="uid://dqwpjooi41m8c" path="res://assets/tileset.png" id="3_dm5o4"]
+[ext_resource type="TileSet" uid="uid://bk1yjrg2qcblf" path="res://tilesets/main.tres" id="4_obtcn"]
+[ext_resource type="PackedScene" uid="uid://ct1jiahn013vu" path="res://scenes/torch.tscn" id="5_2ro2b"]
+[ext_resource type="PackedScene" uid="uid://dedxc2xy38rlo" path="res://scenes/moving_platform.tscn" id="6_fj15s"]
+[ext_resource type="PackedScene" uid="uid://bg7le8i24eeqa" path="res://scenes/player_spawn.tscn" id="7_p0s0h"]
+[ext_resource type="PackedScene" uid="uid://d3irtnld15lre" path="res://scenes/doorway.tscn" id="8_axdoh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hk1ki"]
-texture = ExtResource("3_q5upp")
+texture = ExtResource("3_dm5o4")
 1:0/0 = 0
 2:0/0 = 0
 3:0/0 = 0
@@ -123,9 +123,10 @@ _data = {
 point_count = 3
 
 [node name="Playground" type="Node2D"]
-script = ExtResource("1_iqu7t")
+script = ExtResource("1_c4pne")
+level_number = null
 
-[node name="DirectionalLight2D" parent="." instance=ExtResource("2_s6v32")]
+[node name="DirectionalLight2D" parent="." instance=ExtResource("2_tfamw")]
 position = Vector2(1, -1)
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="."]
@@ -135,24 +136,24 @@ tile_set = SubResource("TileSet_wt17y")
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(2, 0)
 tile_map_data = PackedByteArray("AAD+/wQAAAAPAAUAAAD//wQAAAAQAAUAAAAAAAQAAAAQAAUAAAABAAQAAAAQAAUAAAACAAQAAAAQAAUAAAADAAQAAAAQAAUAAAAEAAQAAAAQAAUAAAAFAAQAAAAQAAUAAAAGAAQAAAAQAAUAAAAHAAQAAAAQAAUAAAAIAAQAAAAQAAUAAAAJAAQAAAAQAAUAAAAKAAQAAAAQAAUAAAALAAQAAAAQAAUAAAAMAAQAAAAQAAUAAAANAAQAAAAQAAUAAAAOAAQAAAAQAAUAAAAPAAQAAAAQAAUAAAAQAAQAAAAQAAUAAAARAAQAAAAQAAUAAAASAAQAAAAQAAUAAAATAAQAAAAQAAUAAAAUAAQAAAAQAAUAAAAVAAQAAAAQAAUAAAAWAAQAAAAQAAUAAAAXAAQAAAAOAAUAAAAXAAMAAAARAAQAAAAWAAMAAAAQAAEAAAAVAAMAAAAQAAEAAAAUAAMAAAAQAAEAAAATAAMAAAAQAAQAAAASAAMAAAAQAAQAAAARAAMAAAAQAAEAAAAQAAMAAAAQAAQAAAAPAAMAAAAQAAEAAAAOAAMAAAAQAAEAAAANAAMAAAAQAAEAAAAMAAMAAAAQAAEAAAALAAMAAAAQAAEAAAAKAAMAAAAQAAEAAAAJAAMAAAAQAAQAAAAIAAMAAAAQAAEAAAAHAAMAAAAQAAEAAAAGAAMAAAAQAAQAAAAFAAMAAAAQAAQAAAAEAAMAAAAQAAEAAAADAAMAAAAQAAEAAAACAAMAAAAQAAEAAAABAAMAAAAQAAQAAAAAAAMAAAAQAAQAAAD//wMAAAAQAAQAAAD+/wMAAAAOAAMAAAAXAAIAAAAOAAAAAAAWAAIAAAAQAAAAAAAVAAIAAAAQAAAAAAAUAAIAAAAPAAMAAAATAAIAAAAPAAEAAAASAAIAAAAQAAAAAAARAAIAAAAQAAAAAAAQAAIAAAAQAAAAAAAPAAIAAAAQAAAAAAAOAAIAAAAQAAAAAAANAAIAAAAQAAAAAAAMAAIAAAAQAAAAAAALAAIAAAAQAAAAAAAKAAIAAAAQAAAAAAAJAAIAAAAQAAAAAAAIAAIAAAAQAAAAAAAHAAIAAAAQAAAAAAAGAAIAAAAQAAAAAAAFAAIAAAAQAAAAAAAEAAIAAAAQAAAAAAADAAIAAAAQAAAAAAACAAIAAAAQAAAAAAABAAIAAAAQAAAAAAAAAAIAAAAQAAAAAAD//wIAAAAQAAAAAAD+/wIAAAAPAAAAAAAKAP3/AAAMAAAAAAALAP3/AAAMAAUAAAAMAP3/AAAMAAUAAAANAP3/AAAMAAUAAAAOAP3/AAAMAAUAAAAPAP3/AAAMAAUAAAAQAP3/AAASAAAAAAATAAEAAAAPAAAAAAAUAAAAAAASAAMAAAAUAAEAAAARAAMAAAAWAP//AAAMAAUAAAAXAP//AAASAAAAAAAVAP//AAAMAAAAAAARAP3/AAAMAAcAAAASAP3/AAAMAAwAAAATAP3/AAASAAcAAAAWAPz/AAAMAAcAAAAXAPz/AAANAAwAAAAXAPv/AAAPAAcAAAAYAPv/AAAPAAgAAAAZAPv/AAAQAAsAAAAZAPr/AAAQAAcAAAAYAPr/AAAPAAcAAAAaAPr/AAAQAAcAAAAZAPz/AAAQAAwAAAAYAPz/AAAQAAwAAAAcAPf/AAAMAAAAAAAdAPf/AAANAAUAAAAbAPr/AAAQAAcAAAAcAPr/AAAQAAcAAAAdAPr/AAAOAAcAAAAeAPr/AAASAAMAAAAeAPv/AAASAAQAAAAeAPz/AAALAAIAAAAfAPz/AAAQAAAAAAAgAPz/AAAQAAAAAAAhAPz/AAARAAMAAAAeAPf/AAAQAAUAAAAfAPf/AAAQAAUAAAAgAPf/AAAQAAUAAAAhAPf/AAAQAAUAAAAiAPf/AAAQAAUAAAAjAPf/AAAQAAUAAAAkAPf/AAAQAAUAAAAlAPf/AAAQAAUAAAAmAPf/AAAQAAUAAAAnAPf/AAAQAAUAAAAoAPf/AAAQAAUAAAApAPf/AAAQAAUAAAAdAPb/AAAPAAAAAAAeAPb/AAAQAAAAAAAfAPb/AAAQAAAAAAAgAPb/AAAPAAEAAAAhAPb/AAAQAAEAAAAiAPb/AAAQAAEAAAAjAPb/AAAQAAEAAAAkAPb/AAAQAAEAAAAlAPb/AAAQAAEAAAAmAPb/AAAQAAQAAAAnAPb/AAAQAAQAAAAgAPX/AAAPAAAAAAAhAPX/AAAQAAAAAAAiAPX/AAAQAAAAAAAjAPX/AAAQAAAAAAAkAPX/AAAQAAAAAAAlAPX/AAAQAAAAAAAmAPX/AAAQAAAAAAAnAPX/AAAQAAAAAAAoAPb/AAAQAAQAAAAqAPf/AAAQAAUAAAAqAPb/AAAQAAQAAAApAPb/AAAQAAEAAAAoAPX/AAAQAAAAAAApAPX/AAAQAAAAAAAqAPX/AAAQAAAAAAArAPX/AAAOAAAAAAArAPb/AAARAAQAAAArAPf/AAAOAAUAAAAhAPr/AAALAAEAAAAhAPv/AAASAAQAAAAhAP3/AAARAAQAAAAhAP7/AAARAAUAAAAiAP7/AAAMAAUAAAAjAP7/AAAMAAUAAAAkAP7/AAANAAUAAAAkAP3/AAAPAAAAAAAlAP3/AAAPAAEAAAAlAPz/AAAPAAAAAAAmAPz/AAAPAAEAAAAmAPv/AAAOAAMAAAAmAPr/AAAPAAAAAAAnAPr/AAAQAAAAAAAoAPr/AAAQAAAAAAApAPr/AAAQAAAAAAAqAPr/AAAOAAAAAAAnAPv/AAAQAAQAAAAoAPv/AAAQAAQAAAApAPv/AAAQAAQAAAAqAPv/AAARAAQAAAAqAPz/AAARAAQAAAApAPz/AAAQAAEAAAAoAPz/AAAQAAQAAAAnAPz/AAAQAAQAAAAnAP3/AAAQAAQAAAAmAP3/AAAQAAQAAAAlAP7/AAAQAAUAAAAmAP7/AAAQAAUAAAAnAP7/AAAQAAUAAAAoAP7/AAAQAAUAAAApAP7/AAAQAAUAAAApAP3/AAAQAAQAAAAqAP3/AAARAAQAAAAoAP3/AAAQAAQAAAAqAP7/AAAOAAUAAAAgAP3/AAAQAAQAAAAfAP3/AAAQAAEAAAAeAP3/AAAOAAMAAAAeAP7/AAAPAAUAAAAfAP7/AAAQAAUAAAAgAP7/AAAQAAUAAAAiAPr/AAASAAAAAAAaAPv/AAAQAAgAAAAbAPv/AAAQAAgAAAAcAPv/AAAQAAgAAAAcAPz/AAAQAAwAAAAbAPz/AAAPAAkAAAAaAPz/AAAPAAsAAAAdAPv/AAARAAsAAAAdAPz/AAAOAAwAAAAaAP3/AAAOAAoAAAAaAP7/AAAOAAoAAAAbAP7/AAARAAsAAAAbAP3/AAARAAsAAAAaAP//AAAOAAoAAAAaAAAAAAAOAAoAAAAbAAAAAAARAAsAAAAbAP//AAARAAsAAAAaAAEAAAAOAAoAAAAaAAIAAAAOAAoAAAAaAAMAAAAOAAoAAAAbAAMAAAARAAsAAAAbAAIAAAARAAsAAAAbAAEAAAARAAsAAAAbAAQAAAAOAAwAAAAaAAQAAAAPAAwAAAA=")
-tile_set = ExtResource("4_hk1ki")
+tile_set = ExtResource("4_obtcn")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.24313726, 0.24705882, 0.30980393, 1)
 
-[node name="Torch" parent="." instance=ExtResource("5_u4dht")]
+[node name="Torch" parent="." instance=ExtResource("5_2ro2b")]
 position = Vector2(567, -50.999996)
 shadow_enabled = true
 
-[node name="MovingPlatform" parent="." instance=ExtResource("6_7un5e")]
+[node name="MovingPlatform" parent="." instance=ExtResource("6_fj15s")]
 position = Vector2(49, 12.999992)
 speed = 5
 
 [node name="Path2D" type="Path2D" parent="MovingPlatform"]
 curve = SubResource("Curve2D_4bqqs")
 
-[node name="PlayerSpawn" parent="." instance=ExtResource("7_q5upp")]
+[node name="PlayerSpawn" parent="." instance=ExtResource("7_p0s0h")]
 position = Vector2(241, -94)
 
-[node name="Doorway" parent="." instance=ExtResource("7_1sl2t")]
+[node name="Doorway" parent="." instance=ExtResource("8_axdoh")]
 position = Vector2(215, -48)

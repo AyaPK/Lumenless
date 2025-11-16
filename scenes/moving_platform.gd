@@ -12,6 +12,7 @@ func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
 	path_follow_2d.loop = looping
+	LevelManager.reset_level.connect(reset)
 	for _c in get_children():
 		if _c is Path2D:
 			path_follow_2d.reparent(_c)
@@ -43,3 +44,6 @@ func active(_delta: float) -> void:
 
 func inactive(_delta: float) -> void:
 	path_follow_2d.progress -= speed
+
+func reset() -> void:
+	path_follow_2d.progress = 0
