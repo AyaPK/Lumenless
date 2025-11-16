@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cagrdx3bs1rwr"]
+
+[node name="DirectionalLight2D" type="DirectionalLight2D"]
+rotation = 0.5235988
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 2.0
