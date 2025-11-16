@@ -9,7 +9,9 @@ func reset_light_meter() -> void:
 func reduce_light_meter(amount: int) -> void:
 	ui.light_meter.value -= amount
 	ui.hp_anim.play("shake")
+	ui.emit_particles()
 	
 func increase_light_meter(amount: int) -> void:
 	ui.light_meter.value += amount
 	ui.hp_anim.play("still")
+	ui.stop_emit_particles()

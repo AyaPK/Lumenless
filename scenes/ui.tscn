@@ -1,12 +1,24 @@
-[gd_scene load_steps=9 format=3 uid="uid://cwoo3dnk3u7hw"]
+[gd_scene load_steps=10 format=3 uid="uid://cwoo3dnk3u7hw"]
 
 [ext_resource type="Script" uid="uid://cdf7dmsy51us0" path="res://scripts/ui.gd" id="1_nt7q6"]
 [ext_resource type="Texture2D" uid="uid://bpjf0co4iue27" path="res://assets/progress_bar_base_under.png" id="2_gdt2y"]
 [ext_resource type="Texture2D" uid="uid://c7mi5fhdt6ptt" path="res://assets/progress_bar_base_over.png" id="2_yev5y"]
 [ext_resource type="Texture2D" uid="uid://ckj82u7mbrfr8" path="res://assets/progress_bar_base.png" id="3_gdt2y"]
 
-[sub_resource type="Animation" id="Animation_gdt2y"]
-resource_name = "still"
+[sub_resource type="Animation" id="Animation_8dubc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LightMeter:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(268, 606)]
+}
 
 [sub_resource type="Animation" id="Animation_wm3ai"]
 resource_name = "shake"
@@ -25,20 +37,8 @@ tracks/0/keys = {
 "values": [Vector2(268, 604), Vector2(269, 605), Vector2(267, 603), Vector2(269, 605), Vector2(267, 605), Vector2(267, 603), Vector2(267.048, 604)]
 }
 
-[sub_resource type="Animation" id="Animation_8dubc"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("LightMeter:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(268, 606)]
-}
+[sub_resource type="Animation" id="Animation_gdt2y"]
+resource_name = "still"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wm3ai"]
 _data = {
@@ -46,6 +46,17 @@ _data = {
 &"shake": SubResource("Animation_wm3ai"),
 &"still": SubResource("Animation_gdt2y")
 }
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gdt2y"]
+particle_flag_disable_z = true
+inherit_velocity_ratio = 0.289
+spread = 130.0
+initial_velocity_min = 30.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 98, 0)
+scale_min = 3.0
+scale_max = 6.0
+color = Color(0.103743516, 0.10374353, 0.103743516, 1)
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_nt7q6")
@@ -72,3 +83,15 @@ color = Color(0, 0, 0, 0)
 libraries = {
 &"": SubResource("AnimationLibrary_wm3ai")
 }
+
+[node name="NodeEnd" type="GPUParticles2D" parent="."]
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_gdt2y")
+
+[node name="NodeEnd2" type="GPUParticles2D" parent="."]
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_gdt2y")
+
+[node name="NodeEnd3" type="GPUParticles2D" parent="."]
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_gdt2y")

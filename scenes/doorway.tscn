@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3irtnld15lre"]
+
+[ext_resource type="Texture2D" uid="uid://bnpnyw35okcx" path="res://assets/doorway.png" id="1_2aw46"]
+
+[node name="Doorway" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.49803922)
+position = Vector2(1, -24)
+texture = ExtResource("1_2aw46")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(0, -24)
+texture = ExtResource("1_2aw46")

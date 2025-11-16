@@ -12,6 +12,7 @@ polygon = PackedVector2Array(-229.99997, -59.999992, -229.99997, 59.999992, 269.
 [node name="MovingPlatform" type="Node2D"]
 scale = Vector2(0.1, 0.1)
 script = ExtResource("1_ms375")
+requires_button = null
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
 

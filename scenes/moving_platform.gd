@@ -2,11 +2,11 @@
 class_name MovingPlatform extends Node2D
 
 @export var looping: bool = true
-@export var speed: int = 2
+@export var speed: int = 2000
 
 @onready var path_follow_2d: PathFollow2D = $PathFollow2D 
 
-var is_active: bool = false
+var is_active: bool = true
 
 func _ready() -> void:
 	if Engine.is_editor_hint():
@@ -36,10 +36,10 @@ func _process(delta: float) -> void:
 	if is_active:
 		active(delta)
 	else:
-		active(2)
+		inactive(delta)
 
-func active(delta: float) -> void:
-	path_follow_2d.progress += speed * delta
+func active(_delta: float) -> void:
+	path_follow_2d.progress += speed
 
-func inactive(delta: float) -> void:
-	path_follow_2d.progress -= speed * delta
+func inactive(_delta: float) -> void:
+	path_follow_2d.progress -= speed

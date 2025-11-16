@@ -1,7 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://ct1jiahn013vu"]
+[gd_scene load_steps=10 format=3 uid="uid://ct1jiahn013vu"]
 
 [ext_resource type="Texture2D" uid="uid://d0k0jihvsx1ov" path="res://assets/light.png" id="1_d4v33"]
 [ext_resource type="Script" uid="uid://bcugedlxkwrgj" path="res://scripts/torch.gd" id="2_my26j"]
+[ext_resource type="Texture2D" uid="uid://d5gnjn41frtq" path="res://assets/torch.png" id="3_o2tjn"]
+
+[sub_resource type="Animation" id="Animation_o2tjn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.2]
+}
 
 [sub_resource type="Animation" id="Animation_my26j"]
 resource_name = "glow"
@@ -19,25 +35,48 @@ tracks/0/keys = {
 "values": [0.2, 0.25]
 }
 
-[sub_resource type="Animation" id="Animation_o2tjn"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r3k50"]
+_data = {
+&"RESET": SubResource("Animation_o2tjn"),
+&"glow": SubResource("Animation_my26j")
+}
+
+[sub_resource type="Animation" id="Animation_ndh0a"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture_scale")
+tracks/0/path = NodePath("../Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.2]
+"update": 1,
+"values": [0]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_r3k50"]
+[sub_resource type="Animation" id="Animation_r3k50"]
+resource_name = "animate"
+length = 0.41
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ndh0a"]
 _data = {
-&"RESET": SubResource("Animation_o2tjn"),
-&"glow": SubResource("Animation_my26j")
+&"RESET": SubResource("Animation_ndh0a"),
+&"animate": SubResource("Animation_r3k50")
 }
 
 [node name="Torch" type="PointLight2D"]
@@ -55,6 +94,18 @@ libraries = {
 &"": SubResource("AnimationLibrary_r3k50")
 }
 autoplay = "glow"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 2)
+texture = ExtResource("3_o2tjn")
+hframes = 3
+
+[node name="spriteanim" type="AnimationPlayer" parent="."]
+root_node = NodePath("../AnimationPlayer")
+libraries = {
+&"": SubResource("AnimationLibrary_ndh0a")
+}
+autoplay = "animate"
 
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
