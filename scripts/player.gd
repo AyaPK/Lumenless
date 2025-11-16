@@ -8,6 +8,8 @@ const LIGHT_CHECK_INTERVAL := 0.1
 const LIGHT_RAY_DISTANCE := 4096.0
 var _light_check_accum := 0.0
 const MAX_POINT_LIGHT_DISTANCE := 40.0
+const PUSH_FORCE: int = 25
+const MAX_VELOCITY: int = 40
 
 @onready var light_ray: RayCast2D = $LightRay
 @onready var light_ray_up: RayCast2D = $LightRayUp
@@ -34,6 +36,13 @@ func _physics_process(delta: float) -> void:
 			velocity.x = direction * SPEED
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
+	
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		var collision_object = collision.get_collider()
+		if collision_object.is_in_group("pushables") and abs(collision_object.get_linear_velocity().x) < MAX_VELOCITY:
+			collision_object.apply_central_impulse(collision.get_normal() * -PUSH_FORCE)
+	
 	update_animation()
 	move_and_slide()
 
@@ -43,9 +52,9 @@ func _physics_process(delta: float) -> void:
 		_update_light_state()
 	
 	if !is_lit:
-		LightManager.increase_light_meter(1)
+		LightManager.increase_light_meter()
 	else:
-		LightManager.reduce_light_meter(1)
+		LightManager.reduce_light_meter()
 
 func update_animation() -> void:
 	if velocity.x !=  0:

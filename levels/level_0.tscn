@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://jq37tdmbp8lk"]
+[gd_scene load_steps=13 format=4 uid="uid://jq37tdmbp8lk"]
 
 [ext_resource type="Script" uid="uid://duxm7abqqccp2" path="res://scripts/level.gd" id="1_c4pne"]
 [ext_resource type="PackedScene" uid="uid://cagrdx3bs1rwr" path="res://scenes/directional_light.tscn" id="2_tfamw"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dedxc2xy38rlo" path="res://scenes/moving_platform.tscn" id="6_fj15s"]
 [ext_resource type="PackedScene" uid="uid://bg7le8i24eeqa" path="res://scenes/player_spawn.tscn" id="7_p0s0h"]
 [ext_resource type="PackedScene" uid="uid://d3irtnld15lre" path="res://scenes/doorway.tscn" id="8_axdoh"]
+[ext_resource type="PackedScene" uid="uid://dcqyw163gmi76" path="res://scenes/block.tscn" id="10_dm5o4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hk1ki"]
 texture = ExtResource("3_dm5o4")
@@ -153,7 +154,10 @@ speed = 5
 curve = SubResource("Curve2D_4bqqs")
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("7_p0s0h")]
-position = Vector2(241, -94)
+position = Vector2(208, -9)
 
 [node name="Doorway" parent="." instance=ExtResource("8_axdoh")]
 position = Vector2(215, -48)
+
+[node name="Block2" parent="." instance=ExtResource("10_dm5o4")]
+position = Vector2(163, 3)

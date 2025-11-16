@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cel0p74q25s4" path="res://scripts/doorway.gd" id="1_oubnr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2aw46"]
-size = Vector2(20, 33)
+size = Vector2(11, 26)
 
 [node name="Doorway" type="Node2D"]
 script = ExtResource("1_oubnr")
@@ -21,7 +21,7 @@ texture = ExtResource("1_2aw46")
 [node name="DoorArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DoorArea"]
-position = Vector2(0, -16.5)
+position = Vector2(0.5, -13)
 shape = SubResource("RectangleShape2D_2aw46")
 debug_color = Color(0.39872602, 0.68686163, 0.5178539, 0.3372549)
 

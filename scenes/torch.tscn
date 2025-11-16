@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ct1jiahn013vu"]
+[gd_scene load_steps=11 format=3 uid="uid://ct1jiahn013vu"]
 
 [ext_resource type="Texture2D" uid="uid://d0k0jihvsx1ov" path="res://assets/light.png" id="1_d4v33"]
 [ext_resource type="Script" uid="uid://bcugedlxkwrgj" path="res://scripts/torch.gd" id="2_my26j"]
@@ -128,9 +128,6 @@ _data = {
 &"animate": SubResource("Animation_r3k50")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r3k50"]
-size = Vector2(153, 134)
-
 [node name="Torch" type="PointLight2D"]
 color = Color(0.9647059, 0.46666667, 0.40784314, 0.5568628)
 texture = ExtResource("1_d4v33")
@@ -162,10 +159,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_ndh0a")
 }
 autoplay = "animate"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(6.5, 1)
-shape = SubResource("RectangleShape2D_r3k50")
 
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
