@@ -1,0 +1,64 @@
+[gd_scene load_steps=12 format=3 uid="uid://cdybsq2xjtoq5"]
+
+[ext_resource type="FontFile" uid="uid://cekc4pj011vr8" path="res://fonts/m5x7.ttf" id="1_6g3el"]
+[ext_resource type="Script" uid="uid://c37xlhatc43p6" path="res://scripts/level_button_container.gd" id="1_nfgsp"]
+[ext_resource type="Texture2D" uid="uid://cltit6273e3iu" path="res://assets/button_normal.png" id="2_ium1h"]
+[ext_resource type="Texture2D" uid="uid://bmumu1mlbyxbd" path="res://assets/button_clickedl.png" id="3_nfgsp"]
+[ext_resource type="Texture2D" uid="uid://b4ri7v3221ie5" path="res://assets/button_hoveredl.png" id="4_b0rp6"]
+[ext_resource type="Script" uid="uid://c500itga5ska" path="res://scripts/level_button.gd" id="5_ium1h"]
+[ext_resource type="Texture2D" uid="uid://bf16xm8cpl5iq" path="res://assets/star_transparent.png" id="6_nfgsp"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6g3el"]
+texture = ExtResource("2_ium1h")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ium1h"]
+texture = ExtResource("3_nfgsp")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nfgsp"]
+texture = ExtResource("4_b0rp6")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b0rp6"]
+
+[node name="LevelButtonContainer" type="HBoxContainer"]
+custom_minimum_size = Vector2(60, 0)
+offset_right = 60.0
+offset_bottom = 67.0
+script = ExtResource("1_nfgsp")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="LevelButton" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_6g3el")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxTexture_6g3el")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ium1h")
+theme_override_styles/hover = SubResource("StyleBoxTexture_nfgsp")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_b0rp6")
+text = "1"
+script = ExtResource("5_ium1h")
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+texture = ExtResource("6_nfgsp")
+
+[connection signal="pressed" from="HBoxContainer/LevelButton" to="HBoxContainer/LevelButton" method="_on_pressed"]

@@ -17,6 +17,14 @@ const STAR = preload("uid://by5fvda33f248")
 const STAR_TRANSPARENT = preload("uid://bf16xm8cpl5iq")
 
 func _ready() -> void:
+	$LightMeter.hide()
+	$ColorRect.hide()
+	$StarSprite.hide()
+
+func set_up() -> void:
+	$LightMeter.show()
+	$ColorRect.show()
+	$StarSprite.show()
 	LightManager.ui = self
 	reset_meter()
 	node_end.emitting = true
@@ -26,7 +34,6 @@ func _ready() -> void:
 	await fade_in_complete
 	LightManager.player.accepting_input = true
 	LevelManager.reset_level.connect(reset_light)
-
 
 func _process(_delta: float) -> void:
 	node_end.global_position = Vector2(light_meter.global_position.x+(light_meter.value*1.28), light_meter.global_position.y)

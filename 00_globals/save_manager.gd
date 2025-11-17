@@ -11,16 +11,16 @@ func _ready() -> void:
  
  
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
  
 # Internal: create a new save dictionary with default values
 func _initialize_new() -> void:
 	data = {}
 	for i in LEVEL_COUNT:
-		if i == 0:
-			return
-		data[i] = {"complete": false, "pickupCollected": false}
+		if i != 0:
+			data[i] = {"complete": false, "pickupCollected": false}
+	save()
  
 # Internal: ensure the save dictionary has all required fields
 func _ensure_template() -> void:
@@ -31,15 +31,16 @@ func _ensure_template() -> void:
 		normalized[ki] = data[k]
 	data = normalized
 	for i in LEVEL_COUNT:
-		if not data.has(i) or typeof(data[i]) != TYPE_DICTIONARY:
-			data[i] = {"complete": false, "pickupCollected": false}
-		else:
-			var lvl: Dictionary = data[i]
-			if not lvl.has("complete"):
-				lvl["complete"] = false
-			if not lvl.has("pickupCollected"):
-				lvl["pickupCollected"] = false
-			data[i] = lvl
+		if i != 0:
+			if not data.has(i) or typeof(data[i]) != TYPE_DICTIONARY:
+				data[i] = {"complete": false, "pickupCollected": false}
+			else:
+				var lvl: Dictionary = data[i]
+				if not lvl.has("complete"):
+					lvl["complete"] = false
+				if not lvl.has("pickupCollected"):
+					lvl["pickupCollected"] = false
+				data[i] = lvl
  
 # Load save file or create a new one if missing/invalid
 func load_save() -> void:
@@ -63,7 +64,6 @@ func save() -> void:
 	f.store_string(txt)
 	f.close()
  
-# Public API: mark a level's pickup as collected
 func mark_collected(level_num: int, save_immediately: bool = true) -> void:
 	if level_num < 0 or level_num >= LEVEL_COUNT:
 		return
@@ -72,7 +72,6 @@ func mark_collected(level_num: int, save_immediately: bool = true) -> void:
 	if save_immediately:
 		save()
  
-# Public API: mark a level as complete
 func mark_complete(level_num: int, save_immediately: bool = true) -> void:
 	if level_num < 0 or level_num >= LEVEL_COUNT:
 		return
@@ -81,12 +80,10 @@ func mark_complete(level_num: int, save_immediately: bool = true) -> void:
 	if save_immediately:
 		save()
  
-# Public API: get the dictionary for a level
 func get_level(level_num: int) -> Dictionary:
 	_ensure_template()
 	return data.get(level_num, {"complete": false, "pickupCollected": false})
  
-# Public API: reset the save data back to defaults
 func reset(save_immediately: bool = true) -> void:
 	_initialize_new()
 	if save_immediately:

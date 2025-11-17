@@ -13,7 +13,7 @@ func _ready() -> void:
 	add_child(player)
 	LevelManager.current_level = level_number
 	Ui.mark_star_incomplete()
-	if LevelManager.got_pickup:
+	if LevelManager.got_pickup and star_pickup:
 		star_pickup.queue_free()
 		Ui.mark_star_complete()
 

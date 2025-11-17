@@ -2,6 +2,7 @@ class_name Level extends Node
 
 var current_level: int = 0
 var got_pickup: bool = false
+var playing: bool = false
 
 @warning_ignore("unused_signal")
 signal player_entering
