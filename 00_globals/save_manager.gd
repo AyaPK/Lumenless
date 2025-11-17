@@ -1,8 +1,8 @@
 extends Node
  
  
-const SAVE_PATH := "user://save.json"
-const LEVEL_COUNT := 10
+const SAVE_PATH: String = "user://save.json"
+const LEVEL_COUNT: int = 6
 var data: Dictionary = {}
  
 # Called when the node enters the scene tree for the first time.
@@ -17,7 +17,7 @@ func _process(_delta: float) -> void:
 # Internal: create a new save dictionary with default values
 func _initialize_new() -> void:
 	data = {}
-	for i in LEVEL_COUNT:
+	for i in LEVEL_COUNT + 1:
 		if i != 0:
 			data[i] = {"complete": false, "pickupCollected": false}
 	save()
@@ -30,7 +30,7 @@ func _ensure_template() -> void:
 		var ki := int(k)
 		normalized[ki] = data[k]
 	data = normalized
-	for i in LEVEL_COUNT:
+	for i in LEVEL_COUNT + 1:
 		if i != 0:
 			if not data.has(i) or typeof(data[i]) != TYPE_DICTIONARY:
 				data[i] = {"complete": false, "pickupCollected": false}

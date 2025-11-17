@@ -1,11 +1,13 @@
 extends RigidBody2D
 
 @onready var shape_cast_2d: ShapeCast2D = $ShapeCast2D
+var start_pos: Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	mass = 1.0
-	pass # Replace with function body.
+	start_pos = global_position
+	LevelManager.reset_level.connect(respawn)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -22,3 +24,6 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 			break
 	if not grounded and abs(state.linear_velocity.y) > 10.0:
 		state.linear_velocity.x = 0.0
+
+func respawn() -> void:
+	global_position = start_pos
