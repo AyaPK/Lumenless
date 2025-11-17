@@ -6,11 +6,15 @@ extends CanvasLayer
 @onready var node_end: GPUParticles2D = $NodeEnd
 @onready var node_end_2: GPUParticles2D = $NodeEnd2
 @onready var node_end_3: GPUParticles2D = $NodeEnd3
+@onready var star_sprite: Sprite2D = $StarSprite
 
 var fading: bool = false
 
 signal fade_out_complete
 signal fade_in_complete
+
+const STAR = preload("uid://by5fvda33f248")
+const STAR_TRANSPARENT = preload("uid://bf16xm8cpl5iq")
 
 func _ready() -> void:
 	LightManager.ui = self
@@ -70,3 +74,9 @@ func fade_in() -> void:
 
 func reset_light() -> void:
 	light_meter.value = light_meter.max_value
+
+func mark_star_incomplete() -> void:
+	star_sprite.texture = STAR_TRANSPARENT
+
+func mark_star_complete() -> void:
+	star_sprite.texture = STAR

@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=4 uid="uid://dopi6q8k6ru2k"]
+[gd_scene load_steps=9 format=4 uid="uid://dopi6q8k6ru2k"]
 
-[ext_resource type="Script" uid="uid://duxm7abqqccp2" path="res://scripts/level.gd" id="1_5722l"]
+[ext_resource type="Script" uid="uid://duxm7abqqccp2" path="res://scenes/scripts/level.gd" id="1_5722l"]
 [ext_resource type="Texture2D" uid="uid://dqwpjooi41m8c" path="res://assets/tileset.png" id="2_ilhis"]
 [ext_resource type="TileSet" uid="uid://bk1yjrg2qcblf" path="res://tilesets/main.tres" id="3_ep78u"]
 [ext_resource type="PackedScene" uid="uid://d3irtnld15lre" path="res://scenes/doorway.tscn" id="4_dfjjl"]
 [ext_resource type="PackedScene" uid="uid://bg7le8i24eeqa" path="res://scenes/player_spawn.tscn" id="5_at1ld"]
+[ext_resource type="PackedScene" uid="uid://chlrywimn7vlx" path="res://scenes/star_pickup.tscn" id="6_ilhis"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mckh2"]
 texture = ExtResource("2_ilhis")
@@ -113,8 +114,10 @@ texture = ExtResource("2_ilhis")
 [sub_resource type="TileSet" id="TileSet_81a5f"]
 sources/0 = SubResource("TileSetAtlasSource_mckh2")
 
-[node name="Level01" type="Node2D"]
+[node name="Level01" type="Node2D" node_paths=PackedStringArray("star_pickup")]
 script = ExtResource("1_5722l")
+level_number = 2
+star_pickup = NodePath("StarPickup")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 position = Vector2(1, -1)
@@ -139,3 +142,6 @@ position = Vector2(181, -48)
 
 [node name="PlayerSpawn" parent="." instance=ExtResource("5_at1ld")]
 position = Vector2(129, 38)
+
+[node name="StarPickup" parent="." instance=ExtResource("6_ilhis")]
+position = Vector2(137, -78)

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://chlrywimn7vlx"]
+
+[ext_resource type="Texture2D" uid="uid://by5fvda33f248" path="res://assets/star.png" id="1_2ekua"]
+[ext_resource type="Script" uid="uid://cxuxx5uu2xjwe" path="res://scenes/scripts/star_pickup.gd" id="1_oughs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ekua"]
+size = Vector2(9, 9)
+
+[node name="StarPickup" type="Node2D"]
+script = ExtResource("1_oughs")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_2ekua")
+
+[node name="PickupZone" type="Area2D" parent="."]
+
+[node name="PickupCollision" type="CollisionShape2D" parent="PickupZone"]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_2ekua")
+
+[connection signal="body_entered" from="PickupZone" to="." method="_on_pickup_zone_body_entered"]

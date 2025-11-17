@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=4 uid="uid://jq37tdmbp8lk"]
 
-[ext_resource type="Script" uid="uid://duxm7abqqccp2" path="res://scripts/level.gd" id="1_c4pne"]
+[ext_resource type="Script" uid="uid://duxm7abqqccp2" path="res://scenes/scripts/level.gd" id="1_c4pne"]
 [ext_resource type="PackedScene" uid="uid://cagrdx3bs1rwr" path="res://scenes/directional_light.tscn" id="2_tfamw"]
 [ext_resource type="Texture2D" uid="uid://dqwpjooi41m8c" path="res://assets/tileset.png" id="3_dm5o4"]
 [ext_resource type="TileSet" uid="uid://bk1yjrg2qcblf" path="res://tilesets/main.tres" id="4_obtcn"]
@@ -125,7 +125,6 @@ point_count = 3
 
 [node name="Playground" type="Node2D"]
 script = ExtResource("1_c4pne")
-level_number = null
 
 [node name="DirectionalLight2D" parent="." instance=ExtResource("2_tfamw")]
 position = Vector2(1, -1)
@@ -160,4 +159,5 @@ position = Vector2(208, -9)
 position = Vector2(215, -48)
 
 [node name="Block2" parent="." instance=ExtResource("10_dm5o4")]
-position = Vector2(163, 3)
+position = Vector2(147, 25)
+mass = 1.0

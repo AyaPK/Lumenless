@@ -1,12 +1,13 @@
-[gd_scene load_steps=11 format=4 uid="uid://dc81uk8f7cg"]
+[gd_scene load_steps=12 format=4 uid="uid://dc81uk8f7cg"]
 
-[ext_resource type="Script" uid="uid://duxm7abqqccp2" path="res://scripts/level.gd" id="1_hokjj"]
+[ext_resource type="Script" uid="uid://duxm7abqqccp2" path="res://scenes/scripts/level.gd" id="1_hokjj"]
 [ext_resource type="Texture2D" uid="uid://dqwpjooi41m8c" path="res://assets/tileset.png" id="2_0fd8o"]
 [ext_resource type="TileSet" uid="uid://bk1yjrg2qcblf" path="res://tilesets/main.tres" id="3_dmnu2"]
 [ext_resource type="PackedScene" uid="uid://d3irtnld15lre" path="res://scenes/doorway.tscn" id="4_sc6c1"]
 [ext_resource type="PackedScene" uid="uid://bg7le8i24eeqa" path="res://scenes/player_spawn.tscn" id="5_ng40l"]
 [ext_resource type="PackedScene" uid="uid://ct1jiahn013vu" path="res://scenes/torch.tscn" id="6_04hp8"]
 [ext_resource type="PackedScene" uid="uid://dedxc2xy38rlo" path="res://scenes/moving_platform.tscn" id="6_hokjj"]
+[ext_resource type="PackedScene" uid="uid://chlrywimn7vlx" path="res://scenes/star_pickup.tscn" id="8_dmnu2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mckh2"]
 texture = ExtResource("2_0fd8o")
@@ -128,8 +129,10 @@ _data = {
 }
 point_count = 3
 
-[node name="Level01" type="Node2D"]
+[node name="Level01" type="Node2D" node_paths=PackedStringArray("star_pickup")]
 script = ExtResource("1_hokjj")
+level_number = 4
+star_pickup = NodePath("StarPickup")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 position = Vector2(1, -1)
@@ -170,3 +173,6 @@ scaling = 1.3
 
 [node name="Torch2" parent="." instance=ExtResource("6_04hp8")]
 position = Vector2(416, 29)
+
+[node name="StarPickup" parent="." instance=ExtResource("8_dmnu2")]
+position = Vector2(94, 19)

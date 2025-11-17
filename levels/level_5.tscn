@@ -1,12 +1,13 @@
-[gd_scene load_steps=10 format=4 uid="uid://43u4rmqib0w"]
+[gd_scene load_steps=11 format=4 uid="uid://43u4rmqib0w"]
 
-[ext_resource type="Script" uid="uid://duxm7abqqccp2" path="res://scripts/level.gd" id="1_g5mgy"]
+[ext_resource type="Script" uid="uid://duxm7abqqccp2" path="res://scenes/scripts/level.gd" id="1_g5mgy"]
 [ext_resource type="Texture2D" uid="uid://dqwpjooi41m8c" path="res://assets/tileset.png" id="2_v5ho1"]
 [ext_resource type="TileSet" uid="uid://bk1yjrg2qcblf" path="res://tilesets/main.tres" id="3_ldpug"]
 [ext_resource type="PackedScene" uid="uid://d3irtnld15lre" path="res://scenes/doorway.tscn" id="4_8vr3t"]
 [ext_resource type="PackedScene" uid="uid://bg7le8i24eeqa" path="res://scenes/player_spawn.tscn" id="5_a58qw"]
 [ext_resource type="PackedScene" uid="uid://dcqyw163gmi76" path="res://scenes/block.tscn" id="6_1y5xd"]
 [ext_resource type="PackedScene" uid="uid://ct1jiahn013vu" path="res://scenes/torch.tscn" id="7_g5mgy"]
+[ext_resource type="PackedScene" uid="uid://chlrywimn7vlx" path="res://scenes/star_pickup.tscn" id="8_v5ho1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mckh2"]
 texture = ExtResource("2_v5ho1")
@@ -122,8 +123,10 @@ texture = ExtResource("2_v5ho1")
 [sub_resource type="TileSet" id="TileSet_81a5f"]
 sources/0 = SubResource("TileSetAtlasSource_mckh2")
 
-[node name="Level02" type="Node2D"]
+[node name="Level02" type="Node2D" node_paths=PackedStringArray("star_pickup")]
 script = ExtResource("1_g5mgy")
+level_number = 5
+star_pickup = NodePath("StarPickup")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 position = Vector2(1, -1)
@@ -149,10 +152,6 @@ position = Vector2(516, -32)
 [node name="PlayerSpawn" parent="." instance=ExtResource("5_a58qw")]
 position = Vector2(45, -95)
 
-[node name="Block2" parent="." instance=ExtResource("6_1y5xd")]
-position = Vector2(88, -88)
-mass = 1.0
-
 [node name="Torch" parent="." instance=ExtResource("7_g5mgy")]
 position = Vector2(111, -99)
 
@@ -161,3 +160,9 @@ position = Vector2(201, -99)
 
 [node name="Doorway2" parent="." instance=ExtResource("4_8vr3t")]
 position = Vector2(261, -80)
+
+[node name="Block3" parent="." instance=ExtResource("6_1y5xd")]
+position = Vector2(80, -89)
+
+[node name="StarPickup" parent="." instance=ExtResource("8_v5ho1")]
+position = Vector2(230, -95)

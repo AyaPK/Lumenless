@@ -20,10 +20,12 @@ config/icon="res://icon.svg"
 LightManager="*res://00_globals/light_manager.gd"
 LevelManager="*res://00_globals/level_manager.gd"
 Ui="*res://scenes/ui.tscn"
+SaveManager="*res://00_globals/save_manager.gd"
 
 [global_group]
 
 lights=""
+pushables=""
 
 [input]
 
