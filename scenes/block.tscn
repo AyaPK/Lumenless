@@ -3,9 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://d2vt6ib6jxsk3" path="res://assets/box.png" id="1_8r6n6"]
 [ext_resource type="Script" uid="uid://2aln7b3ny53j" path="res://scripts/block.gd" id="1_cgrg5"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cgrg5"]
-radius = 7.5
-height = 15.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4kun4"]
+size = Vector2(12, 16)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_tfamw"]
 polygon = PackedVector2Array(156, 11, 156, 12, 155, 12, 155, 26, 156, 26, 156, 27, 170, 27, 170, 26, 171, 26, 171, 12, 170, 12, 170, 11)
@@ -24,8 +23,7 @@ script = ExtResource("1_cgrg5")
 texture = ExtResource("1_8r6n6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -0.5)
-shape = SubResource("CapsuleShape2D_cgrg5")
+shape = SubResource("RectangleShape2D_4kun4")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 position = Vector2(-163, -19)
