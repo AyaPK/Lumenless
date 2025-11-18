@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://b7tj8sdv371k4"]
 
-[ext_resource type="Texture2D" uid="uid://b2slrf5df5o4m" path="res://assets/button.png" id="1_mi6dp"]
+[ext_resource type="Texture2D" uid="uid://b2slrf5df5o4m" path="res://assets/art/button.png" id="1_mi6dp"]
 [ext_resource type="Script" uid="uid://clw3pgv2qomk0" path="res://scripts/button.gd" id="1_rhj8v"]
 
 [sub_resource type="Animation" id="Animation_mi6dp"]

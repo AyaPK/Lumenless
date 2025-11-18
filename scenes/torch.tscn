@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://d0k0jihvsx1ov" path="res://assets/light.png" id="1_d4v33"]
 [ext_resource type="Script" uid="uid://bcugedlxkwrgj" path="res://scripts/torch.gd" id="2_my26j"]
-[ext_resource type="Texture2D" uid="uid://d5gnjn41frtq" path="res://assets/torch.png" id="3_o2tjn"]
+[ext_resource type="Texture2D" uid="uid://d5gnjn41frtq" path="res://assets/art/torch.png" id="3_o2tjn"]
 [ext_resource type="Texture2D" uid="uid://bybyqj2eb8rqs" path="res://assets/lights2.png" id="4_r3k50"]
 
 [sub_resource type="Animation" id="Animation_o2tjn"]

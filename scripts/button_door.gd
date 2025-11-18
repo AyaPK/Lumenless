@@ -16,7 +16,6 @@ func _process(_delta: float) -> void:
 		velocity.y = 50
 
 	if global_position.y <= start_y:
-		print("a")
 		move_and_slide()
 	if global_position.y > start_y and start_y:
 		global_position.y = start_y

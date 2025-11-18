@@ -76,9 +76,9 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_8ln24")
 text = "Level Select"
 
 [node name="LevelButtonContainer" type="HFlowContainer" parent="CanvasLayer"]
-offset_left = 192.0
+offset_left = 215.0
 offset_top = 41.0
-offset_right = 954.0
+offset_right = 977.0
 offset_bottom = 479.0
 
 [connection signal="pressed" from="CanvasLayer/Main Buttons/StartButton" to="." method="_on_start_button_pressed"]

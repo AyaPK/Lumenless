@@ -4,6 +4,8 @@ extends Node
 const SAVE_PATH: String = "user://save.json"
 const LEVEL_COUNT: int = 7
 var data: Dictionary = {}
+
+signal saved
  
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -18,8 +20,8 @@ func _process(_delta: float) -> void:
 func _initialize_new() -> void:
 	data = {}
 	for i in LEVEL_COUNT + 1:
-		#if i != 0:
-		data[i] = {"complete": false, "pickupCollected": false}
+		if i != 0:
+			data[i] = {"complete": false, "pickupCollected": false}
 	save()
  
 # Internal: ensure the save dictionary has all required fields
@@ -31,16 +33,16 @@ func _ensure_template() -> void:
 		normalized[ki] = data[k]
 	data = normalized
 	for i in LEVEL_COUNT + 1:
-		#if i != 0:
-		if not data.has(i) or typeof(data[i]) != TYPE_DICTIONARY:
-			data[i] = {"complete": false, "pickupCollected": false}
-		else:
-			var lvl: Dictionary = data[i]
-			if not lvl.has("complete"):
-				lvl["complete"] = false
-			if not lvl.has("pickupCollected"):
-				lvl["pickupCollected"] = false
-			data[i] = lvl
+		if i != 0:
+			if not data.has(i) or typeof(data[i]) != TYPE_DICTIONARY:
+				data[i] = {"complete": false, "pickupCollected": false}
+			else:
+				var lvl: Dictionary = data[i]
+				if not lvl.has("complete"):
+					lvl["complete"] = false
+				if not lvl.has("pickupCollected"):
+					lvl["pickupCollected"] = false
+				data[i] = lvl
  
 # Load save file or create a new one if missing/invalid
 func load_save() -> void:
@@ -61,11 +63,12 @@ func load_save() -> void:
 func save() -> void:
 	var txt := JSON.stringify(data, "  ")
 	var f := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
+	print("aaaaa")
 	f.store_string(txt)
 	f.close()
  
 func mark_collected(level_num: int, save_immediately: bool = true) -> void:
-	if level_num < 0 or level_num >= LEVEL_COUNT:
+	if level_num < 1 or level_num > LEVEL_COUNT:
 		return
 	_ensure_template()
 	data[level_num]["pickupCollected"] = true
@@ -73,10 +76,11 @@ func mark_collected(level_num: int, save_immediately: bool = true) -> void:
 		save()
  
 func mark_complete(level_num: int, save_immediately: bool = true) -> void:
-	if level_num < 0 or level_num >= LEVEL_COUNT:
+	if level_num < 1 or level_num > LEVEL_COUNT:
 		return
 	_ensure_template()
 	data[level_num]["complete"] = true
+	print("marked complete")
 	if save_immediately:
 		save()
  

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dr5ainqr4710q"]
 
 [ext_resource type="Script" uid="uid://cu5p81h7dlatc" path="res://scripts/button_door.gd" id="1_sn5cu"]
-[ext_resource type="Texture2D" uid="uid://rgse4ed56ync" path="res://assets/door.png" id="1_vox1x"]
+[ext_resource type="Texture2D" uid="uid://rgse4ed56ync" path="res://assets/art/door.png" id="1_vox1x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sn5cu"]
 size = Vector2(13, 51)

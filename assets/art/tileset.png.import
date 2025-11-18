@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5qtox5joieqc"
-path="res://.godot/imported/white_monster.png-480fd56e3db3b9190963f8bfdca76097.ctex"
+uid="uid://dqwpjooi41m8c"
+path="res://.godot/imported/tileset.png-4b0282e8c3e833737baa28cbf141985b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/white_monster.png"
-dest_files=["res://.godot/imported/white_monster.png-480fd56e3db3b9190963f8bfdca76097.ctex"]
+source_file="res://assets/art/tileset.png"
+dest_files=["res://.godot/imported/tileset.png-4b0282e8c3e833737baa28cbf141985b.ctex"]
 
 [params]
 

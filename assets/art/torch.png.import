@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnpnyw35okcx"
-path="res://.godot/imported/doorway.png-2c1d79d4bcc9855dfa1b21b5e7abaa2c.ctex"
+uid="uid://d5gnjn41frtq"
+path="res://.godot/imported/torch.png-d0201fcaee95d40abfa3da177615cd59.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/doorway.png"
-dest_files=["res://.godot/imported/doorway.png-2c1d79d4bcc9855dfa1b21b5e7abaa2c.ctex"]
+source_file="res://assets/art/torch.png"
+dest_files=["res://.godot/imported/torch.png-d0201fcaee95d40abfa3da177615cd59.ctex"]
 
 [params]
 
