@@ -13,10 +13,10 @@ func _process(_delta: float) -> void:
 
 
 func _on_pickup_zone_body_entered(_body: Node2D) -> void:
-	LevelManager.got_pickup = true
-	Ui.mark_star_complete()
-	hide()
-	pass # Replace with function body.
+	if _body.is_in_group("player"):
+		LevelManager.got_pickup = true
+		Ui.mark_star_complete()
+		hide()
 
 func respawn() -> void:
 	LevelManager.got_pickup = false

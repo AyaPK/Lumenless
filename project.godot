@@ -26,6 +26,7 @@ SaveManager="*res://00_globals/save_manager.gd"
 
 lights=""
 pushables=""
+player=""
 
 [input]
 

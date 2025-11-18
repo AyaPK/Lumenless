@@ -2,7 +2,7 @@ extends Node
  
  
 const SAVE_PATH: String = "user://save.json"
-const LEVEL_COUNT: int = 6
+const LEVEL_COUNT: int = 7
 var data: Dictionary = {}
  
 # Called when the node enters the scene tree for the first time.
@@ -18,8 +18,8 @@ func _process(_delta: float) -> void:
 func _initialize_new() -> void:
 	data = {}
 	for i in LEVEL_COUNT + 1:
-		if i != 0:
-			data[i] = {"complete": false, "pickupCollected": false}
+		#if i != 0:
+		data[i] = {"complete": false, "pickupCollected": false}
 	save()
  
 # Internal: ensure the save dictionary has all required fields
@@ -31,16 +31,16 @@ func _ensure_template() -> void:
 		normalized[ki] = data[k]
 	data = normalized
 	for i in LEVEL_COUNT + 1:
-		if i != 0:
-			if not data.has(i) or typeof(data[i]) != TYPE_DICTIONARY:
-				data[i] = {"complete": false, "pickupCollected": false}
-			else:
-				var lvl: Dictionary = data[i]
-				if not lvl.has("complete"):
-					lvl["complete"] = false
-				if not lvl.has("pickupCollected"):
-					lvl["pickupCollected"] = false
-				data[i] = lvl
+		#if i != 0:
+		if not data.has(i) or typeof(data[i]) != TYPE_DICTIONARY:
+			data[i] = {"complete": false, "pickupCollected": false}
+		else:
+			var lvl: Dictionary = data[i]
+			if not lvl.has("complete"):
+				lvl["complete"] = false
+			if not lvl.has("pickupCollected"):
+				lvl["pickupCollected"] = false
+			data[i] = lvl
  
 # Load save file or create a new one if missing/invalid
 func load_save() -> void:
