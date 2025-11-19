@@ -2,7 +2,7 @@ extends Node
  
  
 const SAVE_PATH: String = "user://save.json"
-const LEVEL_COUNT: int = 8
+const LEVEL_COUNT: int = 10
 var data: Dictionary = {}
 
 signal saved
@@ -63,7 +63,6 @@ func load_save() -> void:
 func save() -> void:
 	var txt := JSON.stringify(data, "  ")
 	var f := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
-	print("aaaaa")
 	f.store_string(txt)
 	f.close()
  
@@ -80,7 +79,6 @@ func mark_complete(level_num: int, save_immediately: bool = true) -> void:
 		return
 	_ensure_template()
 	data[level_num]["complete"] = true
-	print("marked complete")
 	if save_immediately:
 		save()
  

@@ -3,7 +3,7 @@ extends Node2D
 const PLAYER = preload("uid://gcebunfbf7wo")
 @onready var player_spawn: Marker2D = $PlayerSpawn
 @export var level_number: int
-@export var light_intensity: int = 1
+@export var light_intensity: float = 1
 @export var star_pickup: StarPickup
 
 func _ready() -> void:
@@ -13,6 +13,7 @@ func _ready() -> void:
 	add_child(player)
 	LevelManager.current_level = level_number
 	Ui.mark_star_incomplete()
+	LevelManager.got_pickup = SaveManager.get_level(level_number)["pickupCollected"]
 	if LevelManager.got_pickup and star_pickup:
 		star_pickup.queue_free()
 		Ui.mark_star_complete()

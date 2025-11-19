@@ -6,7 +6,6 @@ class_name ButtonSwitch extends CharacterBody2D
 func _on_area_2d_body_entered(_body: Node2D) -> void:
 	if _body.is_in_group("player"):
 		animation_player.play("pressed")
-		print(_body)
 		target.is_active = true
 
 func _on_area_2d_body_exited(_body: Node2D) -> void:

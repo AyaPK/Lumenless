@@ -3,7 +3,7 @@ extends Node
 var ui: Ui
 var player: Player
 
-var light_intensity: int = 1
+var light_intensity: float = 1
 
 func reset_light_meter() -> void:
 	ui.reset_meter()

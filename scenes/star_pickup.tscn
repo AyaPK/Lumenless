@@ -1,10 +1,48 @@
-[gd_scene load_steps=4 format=3 uid="uid://chlrywimn7vlx"]
+[gd_scene load_steps=7 format=3 uid="uid://chlrywimn7vlx"]
 
 [ext_resource type="Texture2D" uid="uid://by5fvda33f248" path="res://assets/art/star.png" id="1_2ekua"]
 [ext_resource type="Script" uid="uid://cxuxx5uu2xjwe" path="res://scripts/star_pickup.gd" id="1_oughs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ekua"]
 size = Vector2(9, 9)
+
+[sub_resource type="Animation" id="Animation_oughs"]
+resource_name = "float"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 1.2, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 2), Vector2(0, -2), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_a35rc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a35rc"]
+_data = {
+&"RESET": SubResource("Animation_a35rc"),
+&"float": SubResource("Animation_oughs")
+}
 
 [node name="StarPickup" type="Node2D"]
 script = ExtResource("1_oughs")
@@ -17,5 +55,11 @@ texture = ExtResource("1_2ekua")
 [node name="PickupCollision" type="CollisionShape2D" parent="PickupZone"]
 position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_2ekua")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_a35rc")
+}
+autoplay = "float"
 
 [connection signal="body_entered" from="PickupZone" to="." method="_on_pickup_zone_body_entered"]
