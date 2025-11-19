@@ -7,6 +7,9 @@ const STAR = preload("uid://by5fvda33f248")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$"CanvasLayer/Main Buttons".show()
+	$CanvasLayer/LevelButtonContainer.hide()
+	$CanvasLayer/LevelSelectBackButton.hide()
 	for level in SaveManager.data:
 		var level_button: LevelButtonContainer = LEVEL_BUTTON.instantiate()
 		level_button_container.add_child(level_button)
@@ -25,3 +28,15 @@ func _process(_delta: float) -> void:
 func _on_start_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://levels/level_1.tscn")
 	Ui.set_up()
+
+
+func _on_level_select_back_button_pressed() -> void:
+	$"CanvasLayer/Main Buttons".show()
+	$CanvasLayer/LevelSelectBackButton.hide()
+	$CanvasLayer/LevelButtonContainer.hide()
+	pass
+
+func _on_level_select_button_pressed() -> void:
+	$"CanvasLayer/Main Buttons".hide()
+	$CanvasLayer/LevelSelectBackButton.show()
+	$CanvasLayer/LevelButtonContainer.show()
