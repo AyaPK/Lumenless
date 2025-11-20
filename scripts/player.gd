@@ -27,6 +27,7 @@ func _physics_process(delta: float) -> void:
 	if accepting_input:
 		if Input.is_action_just_pressed("jump") and is_on_floor():
 			velocity.y = JUMP_VELOCITY
+			Ui.play_jump()
 		
 		if Input.is_action_just_pressed("crouch") and is_on_floor():
 			LevelManager.player_entering.emit()
@@ -59,15 +60,17 @@ func _physics_process(delta: float) -> void:
 func update_animation() -> void:
 	if velocity.x !=  0:
 		%player_animation.play("run")
+		Ui.play_footsteps()
 		if velocity.x < 0:
 			$sprite.flip_h = true
 		else:
 			$sprite.flip_h = false
-
 	else:
+		Ui.stop_footsteps()
 		%player_animation.play("idle")  
 		
 	if !is_on_floor():
+		Ui.stop_footsteps()
 		if velocity.y < 0:
 			%player_animation.play("jump")
 		else:

@@ -9,6 +9,8 @@ extends CanvasLayer
 @onready var star_sprite: Sprite2D = $StarSprite
 
 var fading: bool = false
+var rumble_tween: Tween
+var rumble_base_db: float = 8.0
 
 signal fade_out_complete
 signal fade_in_complete
@@ -22,6 +24,7 @@ func _ready() -> void:
 	$LightMeter.hide()
 	$ColorRect.hide()
 	$StarSprite.hide()
+	rumble_base_db = $RumbleSFX.volume_db
 
 func set_up() -> void:
 	$LightMeter.show()
@@ -43,7 +46,7 @@ func _process(_delta: float) -> void:
 	node_end_3.global_position = Vector2(light_meter.global_position.x+(light_meter.value*1.28), light_meter.global_position.y+20)
 	if light_meter.value == 0:
 		LevelManager.reset_level.emit()
-	pass
+	print($RumbleSFX.playing)
 
 func _physics_process(_delta: float) -> void:
 	if not fading:
@@ -53,11 +56,13 @@ func reset_meter() -> void:
 	light_meter.value = 1000
 
 func emit_particles() -> void:
+	play_rumble()
 	node_end.emitting = true
 	node_end_2.emitting = true
 	node_end_3.emitting = true
 
 func stop_emit_particles() -> void:
+	stop_rumble()
 	node_end.emitting = false
 	node_end_2.emitting = false
 	node_end_3.emitting = false
@@ -91,10 +96,38 @@ func mark_star_complete() -> void:
 	star_sprite.texture = STAR
 
 func play_hello_world() -> void:
-	$AudioStreamPlayer.stream = HELLO_WORLD
-	$AudioStreamPlayer.play()
+	$Music.stream = HELLO_WORLD
+	$Music.play()
 
 func play_level_music() -> void:
-	if $AudioStreamPlayer.stream != SHADOW:
-		$AudioStreamPlayer.stream = SHADOW
-		$AudioStreamPlayer.play()
+	if $Music.stream != SHADOW:
+		$Music.stream = SHADOW
+		$Music.play()
+
+func play_rumble() -> void:
+	if rumble_tween:
+		rumble_tween.kill()
+	# Very slight fade-in
+	var start_db := rumble_base_db - 30.0
+	$RumbleSFX.volume_db = start_db
+	if !$RumbleSFX.playing:
+		$RumbleSFX.play()
+	rumble_tween = create_tween()
+	rumble_tween.tween_property($RumbleSFX, "volume_db", rumble_base_db, 0.08).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+
+func stop_rumble() -> void:
+	if rumble_tween:
+		rumble_tween.kill()
+	rumble_tween = create_tween()
+	rumble_tween.tween_property($RumbleSFX, "volume_db", rumble_base_db - 50.0, 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+	rumble_tween.tween_callback(Callable($RumbleSFX, "stop"))
+
+func play_footsteps() -> void:
+	if !$StepSFX.playing:
+		$StepSFX.play()
+
+func stop_footsteps() -> void:
+	$StepSFX.stop()
+
+func play_jump() -> void:
+	$JumpSFX.play()

@@ -1,10 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://cwoo3dnk3u7hw"]
+[gd_scene load_steps=14 format=3 uid="uid://cwoo3dnk3u7hw"]
 
 [ext_resource type="Script" uid="uid://cdf7dmsy51us0" path="res://scripts/ui.gd" id="1_nt7q6"]
 [ext_resource type="Texture2D" uid="uid://bpjf0co4iue27" path="res://assets/progress_bar_base_under.png" id="2_gdt2y"]
 [ext_resource type="Texture2D" uid="uid://c7mi5fhdt6ptt" path="res://assets/progress_bar_base_over.png" id="2_yev5y"]
 [ext_resource type="Texture2D" uid="uid://ckj82u7mbrfr8" path="res://assets/progress_bar_base.png" id="3_gdt2y"]
 [ext_resource type="Texture2D" uid="uid://bf16xm8cpl5iq" path="res://assets/art/star_transparent.png" id="5_wm3ai"]
+[ext_resource type="AudioStream" uid="uid://cde5fg7y2v0e5" path="res://assets/sfx/rumble.wav" id="6_8dubc"]
+[ext_resource type="AudioStream" uid="uid://c1mxwxw5g8ryk" path="res://assets/sfx/step.wav" id="7_p7vwb"]
+[ext_resource type="AudioStream" uid="uid://bkdi0frdvpmfx" path="res://assets/sfx/jump.wav" id="8_ktti3"]
 
 [sub_resource type="Animation" id="Animation_8dubc"]
 length = 0.001
@@ -102,4 +105,25 @@ position = Vector2(223, 613)
 scale = Vector2(4, 4)
 texture = ExtResource("5_wm3ai")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="Music" type="AudioStreamPlayer" parent="."]
+volume_db = -8.0
+bus = &"Music"
+
+[node name="RumbleSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_8dubc")
+volume_db = -0.456
+pitch_scale = 0.35
+bus = &"SFX"
+playback_type = 1
+
+[node name="StepSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_p7vwb")
+volume_db = -24.0
+pitch_scale = 0.97
+bus = &"SFX"
+
+[node name="JumpSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_ktti3")
+volume_db = -15.0
+pitch_scale = 0.85
+bus = &"SFX"
