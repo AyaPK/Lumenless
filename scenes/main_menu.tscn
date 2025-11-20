@@ -159,15 +159,12 @@ script = ExtResource("1_8ln24")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Main Buttons" type="HBoxContainer" parent="CanvasLayer"]
-offset_left = 274.0
-offset_top = 414.0
-offset_right = 878.0
-offset_bottom = 481.0
-
-[node name="StartButton" type="Button" parent="CanvasLayer/Main Buttons"]
+[node name="StartButton" type="Button" parent="CanvasLayer"]
 custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
+offset_left = 429.0
+offset_top = 343.0
+offset_right = 729.0
+offset_bottom = 410.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_wu84c")
@@ -176,7 +173,13 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_l6cm7")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_bqqt6")
 theme_override_styles/hover = SubResource("StyleBoxTexture_8ln24")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_rtw2f")
-text = "Start"
+text = "Start Game"
+
+[node name="Main Buttons" type="HBoxContainer" parent="CanvasLayer"]
+offset_left = 278.0
+offset_top = 414.0
+offset_right = 1186.0
+offset_bottom = 481.0
 
 [node name="LevelSelectButton" type="Button" parent="CanvasLayer/Main Buttons"]
 custom_minimum_size = Vector2(300, 0)
@@ -190,6 +193,19 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_bqqt6")
 theme_override_styles/hover = SubResource("StyleBoxTexture_wu84c")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_8ln24")
 text = "Level Select"
+
+[node name="SettingsButton" type="Button" parent="CanvasLayer/Main Buttons"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_wu84c")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxTexture_l6cm7")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_bqqt6")
+theme_override_styles/hover = SubResource("StyleBoxTexture_wu84c")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8ln24")
+text = "Settings"
 
 [node name="LevelButtonContainer" type="HFlowContainer" parent="CanvasLayer"]
 offset_left = 215.0
@@ -213,6 +229,49 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_wu84c")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_8ln24")
 text = "<- Back"
 
+[node name="AudioBG" type="ColorRect" parent="CanvasLayer"]
+offset_left = 481.0
+offset_top = 141.0
+offset_right = 702.0
+offset_bottom = 242.0
+color = Color(0.29411766, 0.29411766, 0.29411766, 0.6627451)
+
+[node name="SettingsContainer" type="VBoxContainer" parent="CanvasLayer"]
+offset_left = 515.0
+offset_top = 162.0
+offset_right = 659.0
+offset_bottom = 202.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/SettingsContainer"]
+layout_mode = 2
+
+[node name="MusicCheck" type="CheckBox" parent="CanvasLayer/SettingsContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/SettingsContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("1_wu84c")
+theme_override_font_sizes/font_size = 32
+text = "Mute Music"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/SettingsContainer"]
+layout_mode = 2
+
+[node name="SfxCheck" type="CheckBox" parent="CanvasLayer/SettingsContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/SettingsContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("1_wu84c")
+theme_override_font_sizes/font_size = 32
+text = "Mute SFX"
+
 [node name="TileMapLayer2" type="TileMapLayer" parent="."]
 position = Vector2(-367, 29)
 scale = Vector2(4, 4)
@@ -224,6 +283,9 @@ scale = Vector2(4, 4)
 tile_map_data = PackedByteArray("AAAdAO3/AAALAAcAAAD//wcAAAAMAAAAAAADAAoAAAARAAAAAAAEAAoAAAANAAUAAAAFAAoAAAAQAAUAAAAGAAoAAAAPAAQAAAAHAAoAAAAQAAEAAAAIAAoAAAAQAAEAAAAJAAoAAAAPAAMAAAAKAAoAAAAQAAAAAAALAAoAAAAPAAEAAAAMAAoAAAARAAQAAAABAAIAAAAOAAAAAAAAAAIAAAAPAAAAAAABAAMAAAARAAQAAAABAAUAAAARAAIAAAAAAAcAAAAMAAUAAAABAAcAAAANAAMAAAABAAgAAAALAAIAAAACAAgAAAARAAAAAAABAAkAAAAOAAIAAAABAAQAAAARAAQAAAACAAkAAAARAAQAAAABAAoAAAAPAAUAAAACAAoAAAAOAAEAAAACAAsAAAAPAAUAAAADAAsAAAAOAAUAAAAEAAwAAAAMAAAAAAAFAAwAAAAMAAUAAAAGAAwAAAANAAUAAAAGAAsAAAAOAAMAAAAHAAsAAAAQAAEAAAAHAAwAAAAQAAUAAAAIAAsAAAAPAAIAAAAJAAsAAAAQAAUAAAAKAAsAAAAQAAUAAAALAAsAAAAQAAUAAAAMAAsAAAAOAAEAAAANAAsAAAAQAAAAAAAOAAsAAAARAAAAAAAPAAsAAAANAAUAAAAAAAMAAAAOAAIAAAD//wMAAAAMAAUAAAD+/wMAAAAMAAAAAAAAAAkAAAAMAAUAAAD//wkAAAALAAEAAAD//woAAAASAAIAAAAQAAoAAAAQAAQAAAARAAoAAAARAAQAAAARAAkAAAAPAAIAAAARAAgAAAAPAAMAAAARAAEAAAASAAQAAAARAAAAAAALAAEAAAASAAAAAAAMAAUAAAATAAAAAAASAAAAAAAPAAoAAAAOAAMAAAAQAAsAAAAPAAQAAAAQAAkAAAAQAAEAAAAQAAgAAAAPAAEAAAAQAAcAAAAPAAAAAAAQAAUAAAAPAAUAAAAQAAQAAAALAAIAAAAQAAMAAAASAAQAAAAQAAIAAAALAAEAAAARAAQAAAAQAAAAAAARAAcAAAARAAMAAAARAAYAAAASAAQAAAARAAUAAAAQAAIAAAARAAIAAAAMAAQAAAASAAIAAAASAAEAAAASAAMAAAASAAQAAAASAAQAAAARAAMAAAASAAUAAAARAAUAAAATAAUAAAASAAEAAAATAAYAAAASAAQAAAATAAcAAAASAAIAAAASAAgAAAAOAAAAAAASAAkAAAAOAAUAAAATAAoAAAASAAMAAAATAAsAAAASAAIAAAARAAsAAAARAAQAAAARAAwAAAAOAAUAAAAQAAwAAAALAAMAAAAQAA0AAAASAAUAAAAPAA0AAAAMAAAAAAAOAAwAAAAOAAUAAAANAAwAAAAQAAUAAAAMAAwAAAALAAMAAAAMAA0AAAASAAUAAAALAA0AAAAMAAUAAAAKAA0AAAAMAAUAAAAJAA0AAAAMAAAAAAAIAAwAAAAOAAUAAAADAAgAAAAMAAUAAAAEAAgAAAANAAAAAAAFAAgAAAAQAAAAAAAGAAgAAAAQAAAAAAAHAAkAAAAQAAEAAAAIAAgAAAAQAAAAAAAJAAgAAAARAAAAAAAJAAkAAAARAAQAAAAKAAgAAAAMAAUAAAALAAgAAAANAAAAAAALAAkAAAAOAAMAAAAMAAkAAAARAAQAAAANAAgAAAAMAAUAAAAOAAgAAAANAAAAAAAOAAkAAAAPAAUAAAAPAAkAAAAPAAQAAAAFAAkAAAAQAAQAAAAEAAkAAAAOAAMAAAAHAAgAAAAQAAAAAAAMAAgAAAARAAAAAAAPAAgAAAAQAAAAAAAGAAkAAAAQAAQAAAAIAAkAAAAQAAEAAAABAAYAAAASAAQAAAAAAAUAAAAPAAUAAAAAAAQAAAAOAAMAAAA=")
 tile_set = ExtResource("6_rtw2f")
 
-[connection signal="pressed" from="CanvasLayer/Main Buttons/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Main Buttons/LevelSelectButton" to="." method="_on_level_select_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Main Buttons/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/LevelSelectBackButton" to="." method="_on_level_select_back_button_pressed"]
+[connection signal="toggled" from="CanvasLayer/SettingsContainer/HBoxContainer/MusicCheck" to="." method="_on_musiccheck_toggled"]
+[connection signal="toggled" from="CanvasLayer/SettingsContainer/HBoxContainer2/SfxCheck" to="." method="_on_sfxcheck_toggled"]

@@ -13,6 +13,7 @@ func _ready() -> void:
 	LightManager.light_intensity = light_intensity
 	add_child(player)
 	LevelManager.current_level = level_number
+	LevelManager.level_object = self
 	Ui.mark_star_incomplete()
 	LevelManager.got_pickup = SaveManager.get_level(level_number)["pickupCollected"]
 	if LevelManager.got_pickup and star_pickup:

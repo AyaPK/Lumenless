@@ -12,7 +12,7 @@ extends CanvasLayer
 
 var fading: bool = false
 var rumble_tween: Tween
-var rumble_base_db: float = 8.0
+var rumble_base_db: float = 12.0
 
 signal fade_out_complete
 signal fade_in_complete
@@ -40,7 +40,7 @@ func set_up() -> void:
 	fading = true
 	LevelManager.reset_level.connect(reset_light)
 
-func show_intro(text: String, duration: float = 3.5, skip_if_complete: bool = true) -> void:
+func show_intro(text: String, duration: float = 5.0, skip_if_complete: bool = true) -> void:
 	var should_skip := false
 	if skip_if_complete:
 		var lvl := SaveManager.get_level(LevelManager.current_level)
@@ -55,10 +55,16 @@ func show_intro(text: String, duration: float = 3.5, skip_if_complete: bool = tr
 	LightManager.player.accepting_input = false
 	intro_label.text = text
 	intro_overlay.show()
-	$IntroOverlay/IntroLabelAnim.play("fade_in")
+	LevelManager.level_object.process_mode = Node.PROCESS_MODE_DISABLED
+	await get_tree().process_frame
+	var ap: AnimationPlayer = $IntroOverlay/IntroLabelAnim
+	if ap and ap.has_animation("fade_in"):
+		ap.play("fade_in")
 	await get_tree().create_timer(max(0.0, duration)).timeout
-	$IntroOverlay/IntroLabelAnim.play("fade_out")
-	await $IntroOverlay/IntroLabelAnim.animation_finished
+	LevelManager.level_object.process_mode = Node.PROCESS_MODE_ALWAYS
+	if ap and ap.has_animation("fade_out"):
+		ap.play("fade_out")
+		await ap.animation_finished
 	intro_overlay.hide()
 	color_rect.color.a = 1
 	fading = true

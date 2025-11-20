@@ -128,6 +128,7 @@ sources/0 = SubResource("TileSetAtlasSource_mckh2")
 [node name="Level08" type="Node2D" node_paths=PackedStringArray("star_pickup")]
 script = ExtResource("1_lxcpb")
 level_number = 8
+light_intensity = null
 star_pickup = NodePath("StarPickup")
 intro_text = "Ancient machines stir at your presence, obedient to ghosts.
 
