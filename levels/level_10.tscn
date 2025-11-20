@@ -126,6 +126,7 @@ sources/0 = SubResource("TileSetAtlasSource_mckh2")
 [node name="Level10" type="Node2D" node_paths=PackedStringArray("star_pickup")]
 script = ExtResource("1_5n8do")
 level_number = 10
+light_intensity = null
 star_pickup = NodePath("StarPickup")
 intro_text = "You feel the world thinning around you.
 

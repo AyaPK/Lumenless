@@ -14,6 +14,7 @@ func _ready() -> void:
 	$CanvasLayer/AudioBG.hide()
 	$CanvasLayer/SettingsContainer.hide()
 	$CanvasLayer/StartButton.show()
+	$CanvasLayer/StartButton.grab_focus()
 	for level in SaveManager.data:
 		var level_button: LevelButtonContainer = LEVEL_BUTTON.instantiate()
 		level_button_container.add_child(level_button)
