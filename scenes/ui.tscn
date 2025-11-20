@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cwoo3dnk3u7hw"]
+[gd_scene load_steps=19 format=3 uid="uid://cwoo3dnk3u7hw"]
 
 [ext_resource type="Script" uid="uid://cdf7dmsy51us0" path="res://scripts/ui.gd" id="1_nt7q6"]
 [ext_resource type="Texture2D" uid="uid://bpjf0co4iue27" path="res://assets/progress_bar_base_under.png" id="2_gdt2y"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ckj82u7mbrfr8" path="res://assets/progress_bar_base.png" id="3_gdt2y"]
 [ext_resource type="Texture2D" uid="uid://bf16xm8cpl5iq" path="res://assets/art/star_transparent.png" id="5_wm3ai"]
 [ext_resource type="AudioStream" uid="uid://cde5fg7y2v0e5" path="res://assets/sfx/rumble.wav" id="6_8dubc"]
+[ext_resource type="FontFile" uid="uid://cekc4pj011vr8" path="res://fonts/m5x7.ttf" id="6_cgfq5"]
 [ext_resource type="AudioStream" uid="uid://c1mxwxw5g8ryk" path="res://assets/sfx/step.wav" id="7_p7vwb"]
 [ext_resource type="AudioStream" uid="uid://bkdi0frdvpmfx" path="res://assets/sfx/jump.wav" id="8_ktti3"]
 
@@ -62,6 +63,60 @@ scale_min = 3.0
 scale_max = 6.0
 color = Color(0.103743516, 0.10374353, 0.103743516, 1)
 
+[sub_resource type="Animation" id="Animation_cgfq5"]
+resource_name = "fade_in"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IntroLabel:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.4),
+"transitions": PackedFloat32Array(1, 1.7411005),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_7dvkv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IntroLabel:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vdcm2"]
+resource_name = "fade_out"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IntroLabel:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.4333333),
+"transitions": PackedFloat32Array(1, 1.7411005),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7dvkv"]
+_data = {
+&"RESET": SubResource("Animation_7dvkv"),
+&"fade_in": SubResource("Animation_cgfq5"),
+&"fade_out": SubResource("Animation_vdcm2")
+}
+
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_nt7q6")
 
@@ -104,6 +159,35 @@ process_material = SubResource("ParticleProcessMaterial_gdt2y")
 position = Vector2(223, 613)
 scale = Vector2(4, 4)
 texture = ExtResource("5_wm3ai")
+
+[node name="IntroOverlay" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 1)
+
+[node name="IntroLabel" type="Label" parent="IntroOverlay"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = -32.0
+offset_bottom = -32.0
+theme_override_fonts/font = ExtResource("6_cgfq5")
+theme_override_font_sizes/font_size = 60
+text = "AAAAAA"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="IntroLabelAnim" type="AnimationPlayer" parent="IntroOverlay"]
+libraries = {
+&"": SubResource("AnimationLibrary_7dvkv")
+}
+autoplay = "RESET"
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 volume_db = -8.0

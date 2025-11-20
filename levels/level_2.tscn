@@ -118,6 +118,9 @@ sources/0 = SubResource("TileSetAtlasSource_mckh2")
 script = ExtResource("1_5722l")
 level_number = 2
 star_pickup = NodePath("StarPickup")
+intro_text = "You walk where names have burned away.
+
+Even the silence seems afraid to speak of what happened here."
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 position = Vector2(1, -1)

@@ -127,6 +127,9 @@ sources/0 = SubResource("TileSetAtlasSource_mckh2")
 script = ExtResource("1_g5mgy")
 level_number = 5
 star_pickup = NodePath("StarPickup")
+intro_text = "You sense traces of others who passed through the glow.
+
+Their echoes cling to the stone like forgotten prayers."
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 position = Vector2(1, -1)

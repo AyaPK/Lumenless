@@ -129,6 +129,9 @@ sources/0 = SubResource("TileSetAtlasSource_mckh2")
 script = ExtResource("1_lxcpb")
 level_number = 8
 star_pickup = NodePath("StarPickup")
+intro_text = "Ancient machines stir at your presence, obedient to ghosts.
+
+They shift as though they still recognize a master."
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 position = Vector2(1, -1)

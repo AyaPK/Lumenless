@@ -133,6 +133,9 @@ point_count = 3
 script = ExtResource("1_lh5ve")
 level_number = 9
 star_pickup = NodePath("StarPickup")
+intro_text = "Doors rise for you with mechanical sighs.
+
+You do not know why they yield, only that they always have."
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 position = Vector2(1, -1)

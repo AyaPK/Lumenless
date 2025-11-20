@@ -22,8 +22,4 @@ func change_level() -> void:
 	got_pickup = SaveManager.get_level(current_level)["pickupCollected"]
 	if current_level <= SaveManager.LEVEL_COUNT:
 		get_tree().change_scene_to_file("res://levels/level_"+str(current_level)+".tscn")
-	Ui.light_meter.value = Ui.light_meter.max_value
-	Ui.fade_in()
-	await Ui.fade_in_complete
-	LightManager.player.accepting_input = true
-	
+		Ui.light_meter.value = Ui.light_meter.max_value

@@ -126,6 +126,9 @@ sources/0 = SubResource("TileSetAtlasSource_mckh2")
 script = ExtResource("1_20opy")
 level_number = 3
 star_pickup = NodePath("StarPickup")
+intro_text = "Fragments of old structures murmur beneath your steps.
+
+They remember you, though you have no memories of them."
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 position = Vector2(1, -1)

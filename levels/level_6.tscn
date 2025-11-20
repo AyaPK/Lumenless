@@ -127,6 +127,9 @@ script = ExtResource("1_fpvgn")
 level_number = 6
 light_intensity = 3
 star_pickup = NodePath("StarPickup")
+intro_text = "The ruins watch you as you move. Hollow and unblinking.
+
+You wonder if the world itself keeps track of you."
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 position = Vector2(1, -1)

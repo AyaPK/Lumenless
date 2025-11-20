@@ -128,8 +128,10 @@ sources/0 = SubResource("TileSetAtlasSource_mckh2")
 [node name="Level07" type="Node2D" node_paths=PackedStringArray("star_pickup")]
 script = ExtResource("1_urq6f")
 level_number = 7
-light_intensity = 2
 star_pickup = NodePath("StarPickup")
+intro_text = "Glass relics glint with a memory that the light could not devour.
+
+In their reflections, you see shapes that are not yours."
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 position = Vector2(1, -1)

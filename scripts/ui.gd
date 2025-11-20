@@ -7,6 +7,8 @@ extends CanvasLayer
 @onready var node_end_2: GPUParticles2D = $NodeEnd2
 @onready var node_end_3: GPUParticles2D = $NodeEnd3
 @onready var star_sprite: Sprite2D = $StarSprite
+@onready var intro_overlay: ColorRect = $IntroOverlay
+@onready var intro_label: Label = $IntroOverlay/IntroLabel
 
 var fading: bool = false
 var rumble_tween: Tween
@@ -24,6 +26,7 @@ func _ready() -> void:
 	$LightMeter.hide()
 	$ColorRect.hide()
 	$StarSprite.hide()
+	$IntroOverlay.hide()
 	rumble_base_db = $RumbleSFX.volume_db
 
 func set_up() -> void:
@@ -35,10 +38,33 @@ func set_up() -> void:
 	node_end.emitting = true
 	color_rect.color.a = 1
 	fading = true
+	LevelManager.reset_level.connect(reset_light)
+
+func show_intro(text: String, duration: float = 3.5, skip_if_complete: bool = true) -> void:
+	var should_skip := false
+	if skip_if_complete:
+		var lvl := SaveManager.get_level(LevelManager.current_level)
+		should_skip = lvl.get("complete", false)
+	if should_skip or text == "":
+		color_rect.color.a = 1
+		fading = true
+		fade_in()
+		await fade_in_complete
+		LightManager.player.accepting_input = true
+		return
+	LightManager.player.accepting_input = false
+	intro_label.text = text
+	intro_overlay.show()
+	$IntroOverlay/IntroLabelAnim.play("fade_in")
+	await get_tree().create_timer(max(0.0, duration)).timeout
+	$IntroOverlay/IntroLabelAnim.play("fade_out")
+	await $IntroOverlay/IntroLabelAnim.animation_finished
+	intro_overlay.hide()
+	color_rect.color.a = 1
+	fading = true
 	fade_in()
 	await fade_in_complete
 	LightManager.player.accepting_input = true
-	LevelManager.reset_level.connect(reset_light)
 
 func _process(_delta: float) -> void:
 	node_end.global_position = Vector2(light_meter.global_position.x+(light_meter.value*1.28), light_meter.global_position.y)
@@ -46,7 +72,6 @@ func _process(_delta: float) -> void:
 	node_end_3.global_position = Vector2(light_meter.global_position.x+(light_meter.value*1.28), light_meter.global_position.y+20)
 	if light_meter.value == 0:
 		LevelManager.reset_level.emit()
-	print($RumbleSFX.playing)
 
 func _physics_process(_delta: float) -> void:
 	if not fading:

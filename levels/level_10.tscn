@@ -127,6 +127,9 @@ sources/0 = SubResource("TileSetAtlasSource_mckh2")
 script = ExtResource("1_5n8do")
 level_number = 10
 star_pickup = NodePath("StarPickup")
+intro_text = "You feel the world thinning around you.
+
+Even the shadows grow weary under the unending glare."
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 position = Vector2(1, -1)

@@ -118,6 +118,9 @@ sources/0 = SubResource("TileSetAtlasSource_mckh2")
 script = ExtResource("1_mllcm")
 level_number = 1
 star_pickup = NodePath("StarPickup")
+intro_text = "You are the lumenless.
+
+A lone wanderer..."
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 position = Vector2(1, -1)
