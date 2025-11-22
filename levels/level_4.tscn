@@ -133,7 +133,7 @@ point_count = 3
 script = ExtResource("1_hokjj")
 level_number = 4
 star_pickup = NodePath("StarPickup")
-intro_text = "Light has carved scars across this land long before you ever arrived.
+intro_text = "Light has carved scars across this unrecogniseable land.
 
 Yet something about these ruins feels intimately familiar."
 
@@ -145,7 +145,7 @@ shadow_filter = 1
 shadow_filter_smooth = 2.0
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.24313726, 0.24705882, 0.30980393, 1)
+color = Color(0.13725491, 0.14117648, 0.18039216, 1)
 
 [node name="ParallaxLayer" type="Parallax2D" parent="."]
 scroll_scale = Vector2(0.7, 0.7)

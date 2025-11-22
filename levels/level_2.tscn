@@ -119,7 +119,7 @@ sources/0 = SubResource("TileSetAtlasSource_mckh2")
 script = ExtResource("1_5722l")
 level_number = 2
 star_pickup = NodePath("StarPickup")
-intro_text = "You walk where names have burned away.
+intro_text = "You walk where names have decayed.
 
 Even the silence seems afraid to speak of what happened here."
 
@@ -131,7 +131,7 @@ shadow_filter = 1
 shadow_filter_smooth = 2.0
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.24313726, 0.24705882, 0.30980393, 1)
+color = Color(0.13725491, 0.14117648, 0.18039216, 1)
 
 [node name="ParallaxLayer" type="Parallax2D" parent="."]
 scroll_scale = Vector2(0.7, 0.7)
