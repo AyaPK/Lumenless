@@ -13,6 +13,7 @@ config_version=5
 config/name="GWJ-87"
 run/main_scene="uid://b6e750ih3emol"
 config/features=PackedStringArray("4.5", "Forward Plus")
+run/max_fps=60
 boot_splash/image="uid://c76s5rfx0cp1y"
 config/icon="uid://bm66xmddf7mnd"
 
@@ -22,6 +23,10 @@ LightManager="*res://00_globals/light_manager.gd"
 LevelManager="*res://00_globals/level_manager.gd"
 Ui="*res://scenes/ui.tscn"
 SaveManager="*res://00_globals/save_manager.gd"
+
+[display]
+
+window/stretch/mode="viewport"
 
 [global_group]
 
