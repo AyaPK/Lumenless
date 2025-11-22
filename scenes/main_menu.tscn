@@ -1,10 +1,11 @@
-[gd_scene load_steps=21 format=4 uid="uid://b6e750ih3emol"]
+[gd_scene load_steps=22 format=4 uid="uid://b6e750ih3emol"]
 
 [ext_resource type="Script" uid="uid://curb8f1ym31u6" path="res://scripts/main_menu.gd" id="1_8ln24"]
 [ext_resource type="Texture2D" uid="uid://cltit6273e3iu" path="res://assets/button_normal.png" id="1_bqqt6"]
 [ext_resource type="FontFile" uid="uid://cekc4pj011vr8" path="res://fonts/m5x7.ttf" id="1_wu84c"]
 [ext_resource type="Texture2D" uid="uid://bmumu1mlbyxbd" path="res://assets/button_clickedl.png" id="2_wu84c"]
 [ext_resource type="Texture2D" uid="uid://b4ri7v3221ie5" path="res://assets/button_hoveredl.png" id="3_8ln24"]
+[ext_resource type="Texture2D" uid="uid://ccsu7fba17idd" path="res://assets/art/creditspanel.png" id="6_5dd4i"]
 [ext_resource type="TileSet" uid="uid://bk1yjrg2qcblf" path="res://tilesets/main.tres" id="6_rtw2f"]
 [ext_resource type="Texture2D" uid="uid://dqwpjooi41m8c" path="res://assets/art/tileset.png" id="7_oa1go"]
 [ext_resource type="Texture2D" uid="uid://bc54ciitv64xc" path="res://assets/art/logo.png" id="8_tbmy8"]
@@ -210,6 +211,7 @@ color = Color(0.13725491, 0.14117648, 0.18039216, 1)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="StartButton" type="Button" parent="CanvasLayer"]
+visible = false
 custom_minimum_size = Vector2(300, 0)
 offset_left = 429.0
 offset_top = 343.0
@@ -226,9 +228,9 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_rtw2f")
 text = "Start Game"
 
 [node name="Main Buttons" type="HBoxContainer" parent="CanvasLayer"]
-offset_left = 278.0
+offset_left = 126.0
 offset_top = 414.0
-offset_right = 1186.0
+offset_right = 1034.0
 offset_bottom = 481.0
 
 [node name="LevelSelectButton" type="Button" parent="CanvasLayer/Main Buttons"]
@@ -256,6 +258,19 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_bqqt6")
 theme_override_styles/hover = SubResource("StyleBoxTexture_wu84c")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_8ln24")
 text = "Settings"
+
+[node name="CreditsButton" type="Button" parent="CanvasLayer/Main Buttons"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_wu84c")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxTexture_l6cm7")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_bqqt6")
+theme_override_styles/hover = SubResource("StyleBoxTexture_wu84c")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8ln24")
+text = "Credits"
 
 [node name="LevelButtonContainer" type="HFlowContainer" parent="CanvasLayer"]
 offset_left = 215.0
@@ -324,6 +339,111 @@ theme_override_fonts/font = ExtResource("1_wu84c")
 theme_override_font_sizes/font_size = 32
 text = "Mute SFX"
 
+[node name="CreditsArea" type="Node2D" parent="CanvasLayer"]
+visible = false
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CreditsArea"]
+offset_left = 316.0
+offset_top = 69.0
+offset_right = 452.0
+offset_bottom = 149.0
+scale = Vector2(4, 4)
+texture = ExtResource("6_5dd4i")
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CreditsArea"]
+offset_left = 353.0
+offset_top = 140.0
+offset_right = 821.0
+offset_bottom = 350.0
+alignment = 1
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="CanvasLayer/CreditsArea/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/CreditsArea/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_wu84c")
+theme_override_font_sizes/font_size = 40
+text = "Programming, Design, Art, SFX: "
+
+[node name="Label2" type="Label" parent="CanvasLayer/CreditsArea/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_wu84c")
+theme_override_font_sizes/font_size = 40
+text = "Aya"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/CreditsArea/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/CreditsArea/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_wu84c")
+theme_override_font_sizes/font_size = 40
+text = "Music: "
+
+[node name="Label2" type="Label" parent="CanvasLayer/CreditsArea/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_wu84c")
+theme_override_font_sizes/font_size = 40
+text = "Aya, Alex Avery"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="CanvasLayer/CreditsArea/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/CreditsArea/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_wu84c")
+theme_override_font_sizes/font_size = 40
+text = "
+Thank you to my
+incredible playtesters:"
+horizontal_alignment = 1
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="CanvasLayer/CreditsArea/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/CreditsArea/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_wu84c")
+theme_override_font_sizes/font_size = 40
+text = "Kiran, Olly, Freya"
+horizontal_alignment = 1
+
+[node name="CreditsLabel" type="Label" parent="CanvasLayer/CreditsArea"]
+offset_left = 525.0
+offset_top = 92.0
+offset_right = 696.0
+offset_bottom = 161.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = ExtResource("1_wu84c")
+theme_override_font_sizes/font_size = 50
+text = "Credits"
+
 [node name="TileMapLayer2" type="TileMapLayer" parent="."]
 position = Vector2(-367, 29)
 scale = Vector2(4, 4)
@@ -368,6 +488,7 @@ autoplay = "breathe"
 [connection signal="pressed" from="CanvasLayer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Main Buttons/LevelSelectButton" to="." method="_on_level_select_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Main Buttons/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Main Buttons/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/LevelSelectBackButton" to="." method="_on_level_select_back_button_pressed"]
 [connection signal="toggled" from="CanvasLayer/SettingsContainer/HBoxContainer/MusicCheck" to="." method="_on_musiccheck_toggled"]
 [connection signal="toggled" from="CanvasLayer/SettingsContainer/HBoxContainer2/SfxCheck" to="." method="_on_sfxcheck_toggled"]

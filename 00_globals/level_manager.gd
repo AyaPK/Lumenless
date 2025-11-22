@@ -47,7 +47,12 @@ Its shapes whispering a story you can almost recognise.",
 Something buried beneath the brightness still breathes.",
 "You begin to remember a land that time has forgotten.
 
-You begin to remember home."
+You begin to remember home.",
+"This level hasn't been made yet...",
+"Neither has this one,
+
+But it is the final stage...
+Thank you for playing!"
 ]
 
 @warning_ignore("unused_signal")
@@ -65,7 +70,10 @@ func change_level() -> void:
 		SaveManager.mark_collected(current_level)
 	SaveManager.mark_complete(current_level)
 	current_level += 1
-	got_pickup = SaveManager.get_level(current_level)["pickupCollected"]
 	if current_level <= SaveManager.LEVEL_COUNT:
+		got_pickup = SaveManager.get_level(current_level)["pickupCollected"]
 		get_tree().change_scene_to_file("res://levels/level_"+str(current_level)+".tscn")
 		Ui.light_meter.value = Ui.light_meter.max_value
+	else:
+		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+		Ui.fade_in()

@@ -16,6 +16,7 @@ func _ready() -> void:
 	$CanvasLayer/StartButton.show()
 	$MainLogo.show()
 	$CanvasLayer/StartButton.grab_focus()
+	$CanvasLayer/CreditsArea.hide()
 	for level in SaveManager.data:
 		var level_button: LevelButtonContainer = LEVEL_BUTTON.instantiate()
 		level_button_container.add_child(level_button)
@@ -43,6 +44,7 @@ func _on_level_select_back_button_pressed() -> void:
 	$CanvasLayer/LevelButtonContainer.hide()
 	$CanvasLayer/AudioBG.hide()
 	$CanvasLayer/SettingsContainer.hide()
+	$CanvasLayer/CreditsArea.hide()
 	$CanvasLayer/StartButton.show()
 	$MainLogo.show()
 
@@ -59,6 +61,13 @@ func _on_settings_button_pressed() -> void:
 	$CanvasLayer/AudioBG.show()
 	$CanvasLayer/SettingsContainer.show()
 	$CanvasLayer/StartButton.hide()
+	$MainLogo.hide()
+
+func _on_credits_button_pressed() -> void:
+	$"CanvasLayer/Main Buttons".hide()
+	$CanvasLayer/CreditsArea.show()
+	$CanvasLayer/StartButton.hide()
+	$CanvasLayer/LevelSelectBackButton.show()
 	$MainLogo.hide()
 
 func _on_sfxcheck_toggled(toggled_on: bool) -> void:
