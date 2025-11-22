@@ -91,3 +91,7 @@ func reset(save_immediately: bool = true) -> void:
 	_initialize_new()
 	if save_immediately:
 		save()
+
+# Public helper: clear all progress by setting every level's flags to false and saving
+func clear_progress(save_immediately: bool = true) -> void:
+	reset(save_immediately)

@@ -295,15 +295,13 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_8ln24")
 text = "<- Back"
 
 [node name="AudioBG" type="ColorRect" parent="CanvasLayer"]
-visible = false
 offset_left = 481.0
 offset_top = 141.0
 offset_right = 702.0
-offset_bottom = 242.0
+offset_bottom = 308.0
 color = Color(0.29411766, 0.29411766, 0.29411766, 0.6627451)
 
 [node name="SettingsContainer" type="VBoxContainer" parent="CanvasLayer"]
-visible = false
 offset_left = 515.0
 offset_top = 162.0
 offset_right = 659.0
@@ -338,6 +336,22 @@ theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("1_wu84c")
 theme_override_font_sizes/font_size = 32
 text = "Mute SFX"
+
+[node name="Label" type="Label" parent="CanvasLayer/SettingsContainer"]
+layout_mode = 2
+
+[node name="ClearSaveButton" type="Button" parent="CanvasLayer/SettingsContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_wu84c")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_l6cm7")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_bqqt6")
+theme_override_styles/hover = SubResource("StyleBoxTexture_8ln24")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rtw2f")
+text = "Clear Save"
 
 [node name="CreditsArea" type="Node2D" parent="CanvasLayer"]
 visible = false
@@ -492,3 +506,4 @@ autoplay = "breathe"
 [connection signal="pressed" from="CanvasLayer/LevelSelectBackButton" to="." method="_on_level_select_back_button_pressed"]
 [connection signal="toggled" from="CanvasLayer/SettingsContainer/HBoxContainer/MusicCheck" to="." method="_on_musiccheck_toggled"]
 [connection signal="toggled" from="CanvasLayer/SettingsContainer/HBoxContainer2/SfxCheck" to="." method="_on_sfxcheck_toggled"]
+[connection signal="pressed" from="CanvasLayer/SettingsContainer/ClearSaveButton" to="." method="_on_clear_save_button_pressed"]

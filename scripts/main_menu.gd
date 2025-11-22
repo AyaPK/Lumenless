@@ -17,6 +17,13 @@ func _ready() -> void:
 	$MainLogo.show()
 	$CanvasLayer/StartButton.grab_focus()
 	$CanvasLayer/CreditsArea.hide()
+	set_up_level_select()
+	Ui.play_hello_world()
+
+func set_up_level_select():
+	for _c in level_button_container.get_children():
+		_c.queue_free()
+		await _c.tree_exited
 	for level in SaveManager.data:
 		var level_button: LevelButtonContainer = LEVEL_BUTTON.instantiate()
 		level_button_container.add_child(level_button)
@@ -27,7 +34,6 @@ func _ready() -> void:
 			level_button.level_button.modulate = Color(0.565, 0.894, 0.518, 0.722)
 		else:
 			level_button.level_button.modulate = Color(0.962, 0.736, 0.681, 0.722)
-	Ui.play_hello_world()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -75,3 +81,9 @@ func _on_sfxcheck_toggled(toggled_on: bool) -> void:
 
 func _on_musiccheck_toggled(toggled_on: bool) -> void:
 	AudioServer.set_bus_mute(1, toggled_on)
+
+
+func _on_clear_save_button_pressed() -> void:
+	SaveManager.clear_progress(true)
+	set_up_level_select()
+	Ui.play_star_pickup()

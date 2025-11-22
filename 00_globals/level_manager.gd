@@ -63,6 +63,7 @@ signal reset_level
 
 func change_level() -> void:
 	LightManager.player.accepting_input = false
+	LightManager.player.velocity = Vector2.ZERO
 	Ui.fade_out()
 	await Ui.fade_out_complete
 	

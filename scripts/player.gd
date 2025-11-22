@@ -37,6 +37,8 @@ func _physics_process(delta: float) -> void:
 			velocity.x = direction * SPEED
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
+	else:
+		velocity.x = 0
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		var collision_object = collision.get_collider()

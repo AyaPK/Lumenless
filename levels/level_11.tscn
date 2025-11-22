@@ -127,7 +127,7 @@ sources/0 = SubResource("TileSetAtlasSource_lomhg")
 
 [sub_resource type="Curve2D" id="Curve2D_rp27l"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -680, 0, 0, 0, 0, 0, 10, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -600, 0, 0, 0, 0, 0, 10, 0)
 }
 point_count = 3
 
@@ -135,9 +135,6 @@ point_count = 3
 script = ExtResource("1_5n8do")
 level_number = 11
 star_pickup = NodePath("StarPickup")
-intro_text = "You feel the world thinning around you.
-
-Even the shadows grow weary under the unending glare."
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 position = Vector2(1, -1)
