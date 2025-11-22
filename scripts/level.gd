@@ -5,7 +5,6 @@ const PLAYER = preload("uid://gcebunfbf7wo")
 @export var level_number: int
 @export var light_intensity: float = 1
 @export var star_pickup: StarPickup
-@export_multiline var intro_text: String = ""
 
 func _ready() -> void:
 	var player: Player = PLAYER.instantiate()
@@ -20,7 +19,7 @@ func _ready() -> void:
 		star_pickup.queue_free()
 		Ui.mark_star_complete()
 	Ui.play_level_music()
-	Ui.show_intro(intro_text, 5.0, true)
+	Ui.show_intro(LevelManager.prelevel_text[level_number-1], 5.0, true)
 
 func _process(_delta: float) -> void:
 	pass

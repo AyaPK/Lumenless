@@ -5,6 +5,51 @@ var level_object: Node2D
 var got_pickup: bool = false
 var playing: bool = false
 
+var prelevel_text: = [
+"You are the lumenless.
+
+A lone wanderer...",
+"You walk where names have decayed.
+
+Even the silence seems afraid to speak of what happened here.",
+"Fragments of old structures murmur beneath your steps.
+
+They remember you, though you have no memories of them.",
+"Light has carved scars across this unrecogniseable land.
+
+Yet something about these ruins feels intimately familiar.",
+"You sense traces of others who passed through the glow.
+
+Their echoes cling to the stone like forgotten prayers.",
+"The ruins watch you as you move. Hollow and unblinking.
+
+You wonder if the world itself keeps track of you.",
+"Glass relics glint with a memory that the light could not devour.
+
+In their reflections, you see shapes that are not yours.",
+"The world moves for you with mechanical sighs.
+
+You do not know why they yield, only that they always have.",
+"Ancient machines stir at your presence, obedient to ghosts.
+
+They shift as though they still recognize a master.",
+"You feel the world thinning around you.
+
+Even the shadows grow weary under the unending glare.",
+"Light presses closer here, almost listening.
+
+Its hunger has not dimmed since the world first shattered...",
+"The land flickers as if remembering itself...
+
+Its shapes whispering a story you can almost recognise.",
+"The atmosphere bends under a weight you cannot see.
+
+Something buried beneath the brightness still breathes.",
+"You begin to remember a land that time has forgotten.
+
+You begin to remember home."
+]
+
 @warning_ignore("unused_signal")
 signal player_entering
 

@@ -8,6 +8,7 @@ var _hovering_over_pushable: bool = false
 var _hover_y: float = 0.0
 const MAX_SPEED: float = 200.0
 const MAX_NORMAL_PUSH: float = 60.0
+@onready var _sfx_player: AudioStreamPlayer = $AudioStreamPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,19 +27,21 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+@warning_ignore("unused_parameter")
 func _process(delta: float) -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
 	_sfx_check_timer += delta
-	if _sfx_check_timer >= 0.05:
-		_sfx_check_timer = 0.0
-		if abs(linear_velocity.x) > 2.0:
-			if LightManager.ui:
-				LightManager.ui.play_block()
-		else:
-			if LightManager.ui:
-				LightManager.ui.stop_block()
+	if abs(linear_velocity.x) > 1.0:
+		if _sfx_player:
+			if not _sfx_player.playing:
+				_sfx_player.play()
+		elif LightManager.ui:
+			LightManager.ui.play_block()
+	else:
+		if _sfx_player and _sfx_player.playing:
+			_sfx_player.stop()
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	grounded = false
@@ -55,13 +58,11 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	if state.linear_velocity.length() > MAX_SPEED:
 		state.linear_velocity = state.linear_velocity.normalized() * MAX_SPEED
 
-	# If colliding with the player, cap velocity along the collision normal
 	var contact_count2 := state.get_contact_count()
 	for j in range(contact_count2):
 		var obj := state.get_contact_collider_object(j)
 		if obj and obj is Node and (obj as Node).is_in_group("player"):
 			var n2 := state.get_contact_local_normal(j)
-			# Remove excess velocity into the player beyond a small push value
 			var v := state.linear_velocity
 			var into := v.dot(n2)
 			if into > MAX_NORMAL_PUSH:
@@ -101,3 +102,5 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 
 func respawn() -> void:
 	global_position = start_pos
+	if _sfx_player and _sfx_player.playing:
+		_sfx_player.stop()
