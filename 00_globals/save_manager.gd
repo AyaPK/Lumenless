@@ -2,9 +2,10 @@ extends Node
  
  
 const SAVE_PATH: String = "user://save.json"
-const LEVEL_COUNT: int = 11
+const LEVEL_COUNT: int = 16
 var data: Dictionary = {}
 
+@warning_ignore("unused_signal")
 signal saved
  
 # Called when the node enters the scene tree for the first time.
