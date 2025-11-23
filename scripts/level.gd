@@ -20,6 +20,8 @@ func _ready() -> void:
 		Ui.mark_star_complete()
 	Ui.play_level_music()
 	Ui.show_intro(LevelManager.prelevel_text[level_number-1], 5.0, true)
+	if level_number == 16:
+		Ui.fade_level_music()
 
 func _process(_delta: float) -> void:
 	pass

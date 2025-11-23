@@ -48,7 +48,9 @@ Something buried beneath the brightness still breathes.",
 "You begin to remember a land that time has forgotten.
 
 You begin to remember home.",
-"This level hasn't been made yet...",
+"The sky grows comfortable. Welcoming.
+
+The decayed ruins of a lost city are merely a distant memory.",
 "At the world's final threshold, the light softens. It's almost gentle.
 
 You step forward, carrying a story that you don't fully recall..."

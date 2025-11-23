@@ -159,6 +159,10 @@ func play_level_music() -> void:
 	if $Music.stream != SHADOW:
 		$Music.stream = SHADOW
 		$Music.play()
+		
+func fade_level_music() -> void:
+	$Music.stop()
+
 
 func play_rumble() -> void:
 	if rumble_tween:

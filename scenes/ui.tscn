@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cwoo3dnk3u7hw"]
+[gd_scene load_steps=28 format=3 uid="uid://0q32kf7pur43"]
 
 [ext_resource type="Script" uid="uid://cdf7dmsy51us0" path="res://scripts/ui.gd" id="1_nt7q6"]
 [ext_resource type="Texture2D" uid="uid://bpjf0co4iue27" path="res://assets/progress_bar_base_under.png" id="2_gdt2y"]
