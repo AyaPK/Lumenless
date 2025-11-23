@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://b6e750ih3emol"]
+[gd_scene load_steps=21 format=4 uid="uid://chk4j6sovkbao"]
 
 [ext_resource type="Script" uid="uid://curb8f1ym31u6" path="res://scripts/main_menu.gd" id="1_8ln24"]
 [ext_resource type="Texture2D" uid="uid://cltit6273e3iu" path="res://assets/button_normal.png" id="1_bqqt6"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bmumu1mlbyxbd" path="res://assets/button_clickedl.png" id="2_wu84c"]
 [ext_resource type="Texture2D" uid="uid://b4ri7v3221ie5" path="res://assets/button_hoveredl.png" id="3_8ln24"]
 [ext_resource type="Texture2D" uid="uid://ccsu7fba17idd" path="res://assets/art/creditspanel.png" id="6_5dd4i"]
+[ext_resource type="StyleBox" uid="uid://bsrv7cxfvy6cy" path="res://styles/buttonhover.tres" id="6_lgwnu"]
 [ext_resource type="TileSet" uid="uid://bk1yjrg2qcblf" path="res://tilesets/main.tres" id="6_rtw2f"]
 [ext_resource type="Texture2D" uid="uid://dqwpjooi41m8c" path="res://assets/art/tileset.png" id="7_oa1go"]
 [ext_resource type="Texture2D" uid="uid://bc54ciitv64xc" path="res://assets/art/logo.png" id="8_tbmy8"]
@@ -32,16 +33,12 @@ texture_margin_top = 8.0
 texture_margin_right = 8.0
 texture_margin_bottom = 8.0
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rtw2f"]
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wu84c"]
 texture = ExtResource("3_8ln24")
 texture_margin_left = 8.0
 texture_margin_top = 8.0
 texture_margin_right = 8.0
 texture_margin_bottom = 8.0
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8ln24"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tbmy8"]
 texture = ExtResource("7_oa1go")
@@ -217,6 +214,9 @@ offset_left = 429.0
 offset_top = 343.0
 offset_right = 729.0
 offset_bottom = 410.0
+focus_neighbor_left = NodePath("../Main Buttons/LevelSelectButton")
+focus_neighbor_right = NodePath("../Main Buttons/CreditsButton")
+focus_neighbor_bottom = NodePath("../Main Buttons/SettingsButton")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_wu84c")
@@ -224,7 +224,7 @@ theme_override_font_sizes/font_size = 64
 theme_override_styles/normal = SubResource("StyleBoxTexture_l6cm7")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_bqqt6")
 theme_override_styles/hover = SubResource("StyleBoxTexture_8ln24")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_rtw2f")
+theme_override_styles/focus = ExtResource("6_lgwnu")
 text = "Start Game"
 
 [node name="Main Buttons" type="HBoxContainer" parent="CanvasLayer"]
@@ -236,6 +236,7 @@ offset_bottom = 481.0
 [node name="LevelSelectButton" type="Button" parent="CanvasLayer/Main Buttons"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+focus_neighbor_top = NodePath("../../StartButton")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_wu84c")
@@ -243,12 +244,13 @@ theme_override_font_sizes/font_size = 64
 theme_override_styles/normal = SubResource("StyleBoxTexture_l6cm7")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_bqqt6")
 theme_override_styles/hover = SubResource("StyleBoxTexture_wu84c")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_8ln24")
+theme_override_styles/focus = ExtResource("6_lgwnu")
 text = "Level Select"
 
 [node name="SettingsButton" type="Button" parent="CanvasLayer/Main Buttons"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+focus_neighbor_top = NodePath("../../StartButton")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_wu84c")
@@ -256,12 +258,13 @@ theme_override_font_sizes/font_size = 64
 theme_override_styles/normal = SubResource("StyleBoxTexture_l6cm7")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_bqqt6")
 theme_override_styles/hover = SubResource("StyleBoxTexture_wu84c")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_8ln24")
+theme_override_styles/focus = ExtResource("6_lgwnu")
 text = "Settings"
 
 [node name="CreditsButton" type="Button" parent="CanvasLayer/Main Buttons"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+focus_neighbor_top = NodePath("../../StartButton")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_wu84c")
@@ -269,7 +272,7 @@ theme_override_font_sizes/font_size = 64
 theme_override_styles/normal = SubResource("StyleBoxTexture_l6cm7")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_bqqt6")
 theme_override_styles/hover = SubResource("StyleBoxTexture_wu84c")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_8ln24")
+theme_override_styles/focus = ExtResource("6_lgwnu")
 text = "Credits"
 
 [node name="LevelButtonContainer" type="HFlowContainer" parent="CanvasLayer"]
@@ -291,7 +294,7 @@ theme_override_font_sizes/font_size = 64
 theme_override_styles/normal = SubResource("StyleBoxTexture_l6cm7")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_bqqt6")
 theme_override_styles/hover = SubResource("StyleBoxTexture_wu84c")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_8ln24")
+theme_override_styles/focus = ExtResource("6_lgwnu")
 text = "<- Back"
 
 [node name="AudioBG" type="ColorRect" parent="CanvasLayer"]
@@ -343,6 +346,7 @@ layout_mode = 2
 [node name="ClearSaveButton" type="Button" parent="CanvasLayer/SettingsContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../../LevelSelectBackButton")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_wu84c")
@@ -350,7 +354,7 @@ theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxTexture_l6cm7")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_bqqt6")
 theme_override_styles/hover = SubResource("StyleBoxTexture_8ln24")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_rtw2f")
+theme_override_styles/focus = ExtResource("6_lgwnu")
 text = "Clear Save"
 
 [node name="CreditsArea" type="Node2D" parent="CanvasLayer"]

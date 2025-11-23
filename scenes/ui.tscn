@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cltit6273e3iu" path="res://assets/button_normal.png" id="12_qsv74"]
 [ext_resource type="Texture2D" uid="uid://bmumu1mlbyxbd" path="res://assets/button_clickedl.png" id="13_h1mc3"]
 [ext_resource type="Texture2D" uid="uid://b4ri7v3221ie5" path="res://assets/button_hoveredl.png" id="14_cof4p"]
+[ext_resource type="StyleBox" uid="uid://bsrv7cxfvy6cy" path="res://styles/buttonhover.tres" id="15_h1mc3"]
 
 [sub_resource type="Animation" id="Animation_8dubc"]
 length = 0.001
@@ -143,8 +144,6 @@ texture_margin_top = 8.0
 texture_margin_right = 8.0
 texture_margin_bottom = 8.0
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rlppe"]
-
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_nt7q6")
 
@@ -272,7 +271,7 @@ theme_override_font_sizes/font_size = 64
 theme_override_styles/normal = SubResource("StyleBoxTexture_f7tlh")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_8k7j3")
 theme_override_styles/hover = SubResource("StyleBoxTexture_jkdwc")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_rlppe")
+theme_override_styles/focus = ExtResource("15_h1mc3")
 text = "Restart Level"
 
 [node name="ExitButton" type="Button" parent="PauseMenu/VBoxContainer"]
@@ -285,7 +284,7 @@ theme_override_font_sizes/font_size = 64
 theme_override_styles/normal = SubResource("StyleBoxTexture_f7tlh")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_8k7j3")
 theme_override_styles/hover = SubResource("StyleBoxTexture_jkdwc")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_rlppe")
+theme_override_styles/focus = ExtResource("15_h1mc3")
 text = "Exit To Menu"
 
 [node name="Label" type="Label" parent="PauseMenu/VBoxContainer"]
@@ -301,7 +300,7 @@ theme_override_font_sizes/font_size = 64
 theme_override_styles/normal = SubResource("StyleBoxTexture_f7tlh")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_8k7j3")
 theme_override_styles/hover = SubResource("StyleBoxTexture_jkdwc")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_rlppe")
+theme_override_styles/focus = ExtResource("15_h1mc3")
 text = "<-- Back to game"
 
 [connection signal="pressed" from="PauseMenu/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]

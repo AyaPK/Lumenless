@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bmumu1mlbyxbd" path="res://assets/button_clickedl.png" id="3_nfgsp"]
 [ext_resource type="Texture2D" uid="uid://b4ri7v3221ie5" path="res://assets/button_hoveredl.png" id="4_b0rp6"]
 [ext_resource type="Script" uid="uid://c500itga5ska" path="res://scripts/level_button.gd" id="5_ium1h"]
+[ext_resource type="StyleBox" uid="uid://bsrv7cxfvy6cy" path="res://styles/buttonhover.tres" id="6_6acxe"]
 [ext_resource type="Texture2D" uid="uid://bf16xm8cpl5iq" path="res://assets/art/star_transparent.png" id="6_nfgsp"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6g3el"]
@@ -29,8 +30,6 @@ texture_margin_top = 8.0
 texture_margin_right = 8.0
 texture_margin_bottom = 8.0
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b0rp6"]
-
 [node name="LevelButtonContainer" type="HBoxContainer"]
 custom_minimum_size = Vector2(60, 0)
 offset_right = 60.0
@@ -52,7 +51,7 @@ theme_override_font_sizes/font_size = 64
 theme_override_styles/normal = SubResource("StyleBoxTexture_6g3el")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_ium1h")
 theme_override_styles/hover = SubResource("StyleBoxTexture_nfgsp")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_b0rp6")
+theme_override_styles/focus = ExtResource("6_6acxe")
 text = "1"
 script = ExtResource("5_ium1h")
 

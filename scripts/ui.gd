@@ -94,6 +94,7 @@ func _process(_delta: float) -> void:
 
 func show_pause_menu() -> void:
 	$PauseMenu.show()
+	$PauseMenu/VBoxContainer/RestartButton.grab_focus()
 	stop_footsteps()
 	stop_rumble()
 	is_paused = true

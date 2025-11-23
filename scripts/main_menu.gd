@@ -7,6 +7,8 @@ const STAR = preload("uid://by5fvda33f248")
 @onready var sfx_check: CheckBox = $CanvasLayer/SettingsContainer/HBoxContainer2/SfxCheck
 @onready var music_check: CheckBox = $CanvasLayer/SettingsContainer/HBoxContainer/MusicCheck
 
+var last_button: Button
+
 func _ready() -> void:
 	$"CanvasLayer/Main Buttons".show()
 	$CanvasLayer/LevelButtonContainer.hide()
@@ -34,6 +36,8 @@ func set_up_level_select():
 			level_button.level_button.modulate = Color(0.565, 0.894, 0.518, 0.722)
 		else:
 			level_button.level_button.modulate = Color(0.962, 0.736, 0.681, 0.722)
+		if level >= 13:
+			level_button.level_button.focus_neighbor_bottom = "../../../../LevelSelectBackButton"
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -46,6 +50,7 @@ func _on_start_button_pressed() -> void:
 
 func _on_level_select_back_button_pressed() -> void:
 	$"CanvasLayer/Main Buttons".show()
+	last_button.grab_focus()
 	$CanvasLayer/LevelSelectBackButton.hide()
 	$CanvasLayer/LevelButtonContainer.hide()
 	$CanvasLayer/AudioBG.hide()
@@ -56,25 +61,34 @@ func _on_level_select_back_button_pressed() -> void:
 
 func _on_level_select_button_pressed() -> void:
 	$"CanvasLayer/Main Buttons".hide()
+	$CanvasLayer/LevelButtonContainer.get_children()[0].level_button.grab_focus()
 	$CanvasLayer/LevelSelectBackButton.show()
 	$CanvasLayer/LevelButtonContainer.show()
 	$CanvasLayer/StartButton.hide()
+	var first_level_button: Control = $CanvasLayer/LevelButtonContainer.get_children()[-1].level_button
+	$CanvasLayer/LevelSelectBackButton.focus_neighbor_top = first_level_button.get_path()
 	$MainLogo.hide()
+	last_button = $"CanvasLayer/Main Buttons/LevelSelectButton"
 
 func _on_settings_button_pressed() -> void:
 	$"CanvasLayer/Main Buttons".hide()
+	$CanvasLayer/SettingsContainer/ClearSaveButton.grab_focus()
 	$CanvasLayer/LevelSelectBackButton.show()
 	$CanvasLayer/AudioBG.show()
 	$CanvasLayer/SettingsContainer.show()
 	$CanvasLayer/StartButton.hide()
+	$CanvasLayer/LevelSelectBackButton.focus_neighbor_top = "../SettingsContainer/ClearSaveButton"
 	$MainLogo.hide()
+	last_button = $"CanvasLayer/Main Buttons/SettingsButton"
 
 func _on_credits_button_pressed() -> void:
 	$"CanvasLayer/Main Buttons".hide()
+	$CanvasLayer/LevelSelectBackButton.grab_focus()
 	$CanvasLayer/CreditsArea.show()
 	$CanvasLayer/StartButton.hide()
 	$CanvasLayer/LevelSelectBackButton.show()
 	$MainLogo.hide()
+	last_button = $"CanvasLayer/Main Buttons/CreditsButton"
 
 func _on_sfxcheck_toggled(toggled_on: bool) -> void:
 	AudioServer.set_bus_mute(2, toggled_on)

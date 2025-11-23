@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://duxm7abqqccp2" path="res://scripts/level.gd" id="1_mllcm"]
 [ext_resource type="Texture2D" uid="uid://dqwpjooi41m8c" path="res://assets/art/tileset.png" id="1_ty3hu"]
 [ext_resource type="TileSet" uid="uid://bk1yjrg2qcblf" path="res://tilesets/main.tres" id="2_mckh2"]
-[ext_resource type="PackedScene" uid="uid://d3irtnld15lre" path="res://scenes/doorway.tscn" id="3_81a5f"]
-[ext_resource type="PackedScene" uid="uid://bg7le8i24eeqa" path="res://scenes/player_spawn.tscn" id="4_gg43x"]
-[ext_resource type="PackedScene" uid="uid://chlrywimn7vlx" path="res://scenes/star_pickup.tscn" id="6_btoec"]
+[ext_resource type="PackedScene" path="res://scenes/doorway.tscn" id="3_81a5f"]
+[ext_resource type="PackedScene" path="res://scenes/player_spawn.tscn" id="4_gg43x"]
+[ext_resource type="PackedScene" path="res://scenes/star_pickup.tscn" id="6_btoec"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_btoec"]
 texture = ExtResource("1_ty3hu")
@@ -118,9 +118,6 @@ sources/0 = SubResource("TileSetAtlasSource_btoec")
 script = ExtResource("1_mllcm")
 level_number = 1
 star_pickup = NodePath("StarPickup")
-intro_text = "You are the lumenless.
-
-A lone wanderer..."
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 position = Vector2(1, -1)
